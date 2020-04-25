@@ -1,0 +1,91 @@
+html, body{
+    overflow-x: hidden;
+    background-color: rgb(30, 82, 112); 
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    background-color: rgb(30, 82, 112);
+    height: 3.5em;
+}
+
+a, a:hover{
+    color: white;
+    font-weight: 700;
+}
+
+.logo{
+    height: 2em;
+    weight: auto;
+}
+
+#navbarSupportedContent{
+    position: fixed;
+    right: 20px;
+}
+
+.nav-item{
+    padding: 1em;
+}
+
+
+.cover{
+    background-image: url('../images/cover.png');
+    background-repeat: no-repeat;
+    height: 68vh;
+    weight: 100%;
+    margin-top: 2em;
+    background-size: cover;
+}
+
+
+.d-block{
+    height: 20em;
+}
+
+.search-form{
+    background-color: rgb(30, 82, 112); 
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+
+#searcher{
+    width: 40em;
+}
+
+.title{
+    margin-top: 1em;
+    height: 80px;
+    width: 100%;
+    background-image: url('../images/busqueda.png');
+    background-size: cover;
+    margin-bottom: 20px;
+    margin-left: -10px;
+}
+.opciones{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio, .filtro{
+    background-color: rgb(3, 152, 158);
+    color: white;
+    font-weight: 600;
+}
+
+.send-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
