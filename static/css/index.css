@@ -31,14 +31,35 @@ a, a:hover{
 
 
 .cover{
-    background-image: url('../images/cover.png');
+    background-image: url('../images/cover2.png');
     background-repeat: no-repeat;
-    height: 68vh;
+    height: 100vh;
     weight: 100%;
     margin-top: 2em;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
+#bienvenida{
+    display: none;
+}
+
+@media screen and (max-width: 1024px){
+    .cover{
+        background-image: url('../images/album.jpg');
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        background-blend-mode: darken;
+        font-size: 2em;
+    }
+    #bienvenida{
+        display: block;
+    }
+}
 
 .d-block{
     height: 20em;
