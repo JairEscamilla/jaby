@@ -54,11 +54,32 @@ a, a:hover{
         align-items: center;
         background-color: rgba(0, 0, 0, 0.5);
         background-blend-mode: darken;
-        font-size: 2em;
+        font-size: x-large;
     }
     #bienvenida{
         display: block;
     }
+    .title{
+        display: none;
+    }
+    
+    #searchTitle{
+        display: block !important;
+        color: white;
+    }
+
+    .search-form{
+        padding: 2em;
+    }
+
+    #searcher{
+        width: 99% !important;
+    }
+
+}
+
+#searchTitle{
+    display: none;
 }
 
 .d-block{
