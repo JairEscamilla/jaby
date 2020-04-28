@@ -1,0 +1,36 @@
+nav{
+    position: fixed;
+    top: 0;
+    background-color: rgb(30, 82, 112);
+    height: 3.5em;
+}
+
+a, a:hover{
+    color: white;
+    font-weight: 700;
+}
+
+.logo{
+    height: 2em;
+    weight: auto;
+}
+
+nav ul li{
+    display: inline-block;
+    padding: 1em;
+    margin-top: 1em;
+}
+
+.navContent{
+    position: fixed;
+    right: 20px;
+}
+
+#navbarSupportedContent{
+    position: fixed;
+    right: 20px;
+}
+
+.nav-item{
+    padding: 1em;
+}

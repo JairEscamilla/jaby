@@ -10,6 +10,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="static/css/index.css">
+        <link rel="stylesheet" href="static/css/nav.css">
 </head>
 <body>
     <!-- INICIO DE LA BARRA DE NAVEGACION -->
@@ -18,19 +19,10 @@
                 <a class="navbar-brand" href="#">
                     <img src="static/images/logo.png" class="logo">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Registrarse <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="users/login.html">Login <span class="sr-only">(current)</span></a>
-                        </li>
+                <div class="navContent">
+                    <ul>
+                        <a href="users/login.html"><li>Login</li></a>
+                        <a href="#"><li>Registrarse</li></a>
                     </ul>
                 </div>
             </nav>
