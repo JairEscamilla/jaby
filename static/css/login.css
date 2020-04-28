@@ -2,56 +2,39 @@ html, body{
     background-color: rgb(3, 152, 158);
     overflow-x: hidden;
 }
-nav{
-    position: fixed;
-    top: 0;
-    background-color: rgb(30, 82, 112);
-    height: 3.5em;
+
+.image-container{
+    background-image: url('../images/login.png');
+    background-repeat: no-repeat;
+    margin-top: 80px;
+    height: 60px;
+    width: auto;
 }
 
-a, a:hover{
-    color: white;
-    font-weight: 700;
-}
-
-.logo{
-    height: 2em;
-    weight: auto;
-}
-
-#navbarSupportedContent{
-    position: fixed;
-    right: 20px;
-}
-
-.nav-item{
-    padding: 1em;
-}
-
-.titulo{
-    height: 7em;
-    margin-top: 5em;
-}
-
-.lbl{
+.centrado{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
     font-weight: 700;
     font-size: 30px;
 }
-.container{
-    margin-top: 2.2em;
-    margin-left: 26.8em;
-}
+
 
 .entradas{
-    width: 500px;
+    width: 30em;
 }
 
-.centrado{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@media screen and (min-width: 360px) and  (max-width: 500px){
+    .entradas{
+        width: 20em;
+    }
+}
+
+@media screen and (max-width: 360px){
+    .entradas{
+        width: 15em;
+    }
 }
 
 .btn-success{
