@@ -30,11 +30,6 @@
 .imagen{
     margin-top: -20px;
 }
-.form{
-    width: 50%;
-    height: 100px;
-    background-color: blue;
-}
 
 .picture-loaded{
     width: 250px;
@@ -48,3 +43,7 @@
 }
 
 
+
+form{
+    margin-bottom: 50px;
+}

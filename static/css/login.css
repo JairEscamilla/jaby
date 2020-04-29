@@ -17,7 +17,7 @@ html, body{
     justify-content: center;
     color: white;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 
@@ -39,6 +39,6 @@ html, body{
 
 .btn-success{
     margin-top: 20px;
-    font-size: x-large;
+    font-size: large;
     padding: 0.4em 1.5em;
 }
