@@ -1,3 +1,5 @@
+/* Estilos para la barra de navegación */
+
 nav{
     position: fixed;
     top: 0;
@@ -35,6 +37,7 @@ nav ul li{
     padding: 1em;
 }
 
+/* Estilos para pantallas de un maximo de pantalla de 320 pixels */
 @media screen and (max-width: 320px){
     nav ul li{
         padding: 0.5em;

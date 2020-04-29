@@ -1,3 +1,5 @@
+/* Hoja de estilos para el login */
+
 html, body{
     background-color: rgb(3, 152, 158);
     overflow-x: hidden;
@@ -25,12 +27,14 @@ html, body{
     width: 30em;
 }
 
+/* Estilos para pantallas de minimo 360px y maximo 500px de anchura */
 @media screen and (min-width: 360px) and  (max-width: 500px){
     .entradas{
         width: 20em;
     }
 }
 
+/* Estilos para pantallas de maximo 360px de anchura */
 @media screen and (max-width: 360px){
     .entradas{
         width: 15em;
