@@ -1,3 +1,18 @@
+$(document).ready(function(){
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    year = year - 15;
+    if (day < 10) 
+        day = '0' + day;
+    if (month < 10) 
+        month = '0' + month;
+    date = year + '-' + month + '-' + day;
+    document.registro.fecnac.value = date;
+    document.registro.fecnac.max = date;
+});
+
 function validate(){
     var form = document.registro;
     var elementosLetras = [form.nombre, form.apPat, form.apMat];
