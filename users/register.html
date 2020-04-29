@@ -41,7 +41,7 @@
     <div class="image-container-register">
     </div>
 
-    <form>
+    <form action="registro.php" method="POST" enctype="multipart/form-data" >
         <div class="container">
             <div class="row">
                     <div class="col-sm">
@@ -50,25 +50,25 @@
                         </div>
                         <div class="picture">
                             <div class="form-group imagen">
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                <input name="file" type="file" class="form-control-file" id="exampleFormControlFile1">
                             </div>
                         </div>
                         <div class="centrado">
                             <div class="form-group">
                                 <label for="username" class="lbl">Username</label>
-                                <input type="text" class="form-control entradas" id="username" placeholder="Ingresa tu username">
+                                <input name="username" type="text" class="form-control entradas" id="username" placeholder="Ingresa tu username">
                             </div>
                         </div>
                         <div class="centrado">
                             <div class="form-group">
                                 <label for="password" class="lbl">Password</label>
-                                <input type="password" class="form-control entradas" id="password" placeholder="Ingresa tu password">
+                                <input name="password" type="password" class="form-control entradas" id="password" placeholder="Ingresa tu password">
                             </div>
                         </div>
                         <div class="centrado">
                             <div class="form-group">
                                 <label for="email|" class="lbl">Email</label>
-                                <input type="email|" class="form-control entradas" id="email|" placeholder="Ingresa tu email|">
+                                <input name="email" type="email|" class="form-control entradas" id="email|" placeholder="Ingresa tu email|">
                             </div>
                         </div>
                     </div>
@@ -77,38 +77,45 @@
                         <div class="centrado">
                             <div class="form-group">
                                 <label for="nombre" class="lbl">Nombre</label>
-                                <input type="text" class="form-control entradas" id="nombre" placeholder="Ingresa tu nombre">
+                                <input name="nombre" type="text" class="form-control entradas" id="nombre" placeholder="Ingresa tu nombre">
                             </div>
                         </div>
                         <div class="centrado">
                             <div class="form-group">
                                 <label for="apPat" class="lbl">Apellido paterno</label>
-                                <input type="text" class="form-control entradas" id="apPat" placeholder="Ingresa tu apellido paterno">
+                                <input name="apPat" type="text" class="form-control entradas" id="apPat" placeholder="Ingresa tu apellido paterno">
                             </div>
                         </div>
                         <div class="centrado">
                             <div class="form-group">
                                 <label for="apMat" class="lbl">Apellido materno</label>
-                                <input type="text" class="form-control entradas" id="apMat" placeholder="Ingresa tu apellido materno">
+                                <input name="apMat" type="text" class="form-control entradas" id="apMat" placeholder="Ingresa tu apellido materno">
                             </div>
                         </div>
                         <div class="centrado">
                             <div class="form-group">
                                 <label for="escolaridad" class="lbl">Escolaridad</label>
-                                <input type="text" class="form-control entradas" id="escolaridad" placeholder="Ingresa tu escolaridad">
+                                <input name="escolaridad" type="text" class="form-control entradas" id="escolaridad" placeholder="Ingresa tu escolaridad">
                             </div>
                         </div>
                         <div class="centrado">
                             <div class="form-group"> 
                                 <label for="example-date-input" class="lbl">Fecha de nacimiento</label>
-                                    <input class="form-control entradas" type="date" value="2011-08-19" id="example-date-input">
+                                <input name="fecnac" class="form-control entradas" type="date" value="2011-08-19" id="example-date-input">
                             </div>
                         </div>
                         <div class="centrado">
-                            <button type="button" class="btn btn-success">Registrarse</button>
+                            <div class="form-group">
+                                <label for="direccion" class="lbl">Dirección</label>
+                                <input name="direccion" type="text" class="form-control entradas" id="direccion"
+                                    placeholder="Ingresa tu dirección">
+                            </div>
                         </div>
                     </div>
                 </div>
+        </div>
+        <div class="centrado">
+            <button type="submit" class="btn btn-success">Registrarse</button>
         </div>
     </form>
 
