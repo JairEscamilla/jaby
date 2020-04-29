@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../static/css/login.css">
     <link rel="stylesheet" href="../static/css/nav.css">
     <link rel="icon" type="image/png" href="../static/images/favicon.png" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </head>
 
 <body>
@@ -41,7 +42,7 @@
     <div class="image-container-register">
     </div>
 
-    <form action="registro.php" method="POST" enctype="multipart/form-data" >
+    <form action="registro.php" method="POST" enctype="multipart/form-data" onsubmit="return validate()" name="registro" >
         <div class="container">
             <div class="row">
                     <div class="col-sm">
@@ -68,7 +69,7 @@
                         <div class="centrado">
                             <div class="form-group">
                                 <label for="email|" class="lbl">Email</label>
-                                <input name="email" type="email|" class="form-control entradas" id="email|" placeholder="Ingresa tu email|">
+                                <input name="email" type="email" class="form-control entradas" id="email|" placeholder="Ingresa tu email|">
                             </div>
                         </div>
                     </div>
@@ -119,31 +120,8 @@
         </div>
     </form>
 
-
-    <!--<div class="centrado">
-        <div class="content">
-            <div class="row">
-                <form>
-                    <div class="col-sm profile-pic">
-                        <div class="pic"></div>
-                    </div>
-                    <div class="col-sm form">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1" class="lbl">Usuario</label>
-                            <input type="email" class="form-control entradas" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Ingresa tu usuario">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1" class="lbl">Contraseña</label>
-                            <input type="password" class="form-control entradas" id="exampleInputPassword1" placeholder="Ingresa tu contraseña">
-                        </div>
-                        <button type="button" class="btn btn-success">Entrar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>-->
     <script src="../static/js/avatar.js"></script>
+    <script src="../static/js/validacionesRegistro.js"></script>
 </body>
 
 </html>
