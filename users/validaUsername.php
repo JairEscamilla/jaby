@@ -20,7 +20,7 @@
     }
 
     if(mysqli_num_rows($result) >= 1){
-        $template->setVariable("MENSAJE_ERROR", "Este username no está disponible");
+        $template->setVariable("MENSAJE_ERROR", "Username no disponible");
     }else{
         $template->setVariable("MENSAJE_ERROR", "Username");
     }
