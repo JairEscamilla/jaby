@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="../static/css/login.css">
         <link rel="stylesheet" href="../static/css/nav.css">
         <link rel="icon" type="image/png" href="../static/images/favicon.png" />
+    <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
 </head>
 <body>
     <!-- INICIO DE LA BARRA DE NAVEGACION -->
@@ -38,20 +40,20 @@
     
     <div class="centrado">
         <div class="contenido">
-            <form>
+            <form name="login">
                 <div class="form-group">
-                    <label for="exampleInputEmail1" class="lbl">Usuario</label>
-                    <input type="email" class="form-control entradas" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Ingresa tu usuario">
+                    <label for="exampleInputEmail1" class="lbl">Username</label>
+                    <input name="username" type="text" class="form-control entradas" id="username" placeholder="Ingresa tu usuario" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1" class="lbl">Contraseña</label>
-                    <input type="password" class="form-control entradas" id="exampleInputPassword1" placeholder="Ingresa tu contraseña">
+                    <label for="exampleInputPassword1" class="lbl">Password</label>
+                    <input name="password" type="password" class="form-control entradas" id="exampleInputPassword1" placeholder="Ingresa tu contraseña">
                 </div>
-                <button type="button" class="btn btn-success">Entrar</button>
-    
+                <button type="button" class="btn btn-success" onclick="iniciarSesion()">Entrar</button>
             </form>
         </div>
     </div>
+    <!-- scripts necesarios para el funcionamiento -->
+    <script src="../static/js/iniciarSesion.js"></script>
 </body>
 </html>
