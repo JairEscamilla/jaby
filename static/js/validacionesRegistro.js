@@ -51,3 +51,27 @@ function validate(){ // Función de validacion de datos
     });
     return retorno;
 }
+
+// Vamos a validar que solamente haya un unico username
+
+function validaUsername(){
+    var username =  document.registro.username.value;
+    $.ajax({
+        url: 'validaUsername.php',
+        dataType: 'html',
+        type: 'POST',
+        async: true,
+        data: { username: username },
+        success: successRespone,
+        error: errorFunction
+    });
+}
+
+function successRespone(result, status){
+    document.getElementById("lblUsername").innerHTML = "";
+    document.getElementById("lblUsername").innerHTML = result;
+}
+
+function errorFunction(status, error){
+    console.log("Ha ocurrido un error):");
+}
