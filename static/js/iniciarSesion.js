@@ -13,7 +13,20 @@ function iniciarSesion(){
 }
 
 function successRespone(result, status){
-    console.log(result);
+    if(result == "logged"){
+        Swal.fire(
+            'Jaby',
+            'Haz iniciado sesión con éxito',
+            'success'
+        )
+        window.location.href = "profile.php";
+    }else{
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Tus datos no coinciden'
+        })
+    }
 }
 
 function errorFunction(error, status){
