@@ -1,4 +1,5 @@
 function iniciarSesion(){
+    // Obtenemos los valores del formulario
     var username = document.login.username.value;
     var password = document.login.password.value;
     $.ajax({ // Peticion AJAX para la validacion
@@ -14,21 +15,16 @@ function iniciarSesion(){
 
 function successRespone(result, status){
     if(result == "logged"){
-        Swal.fire(
-            'Jaby',
-            'Haz iniciado sesión con éxito',
-            'success'
-        )
-        window.location.href = "profile.php";
+        window.location.href = "profile.php"; // En caso de logearse con exito, redireccionamos al perfil del usuario
     }else{
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Tus datos no coinciden'
+            text: 'Tus datos no coinciden' // En caso de que no haya coincidencias, mostramos error
         })
     }
 }
 
-function errorFunction(error, status){
+function errorFunction(error, status){ // Desplegamos el error de conexion
     console.log("Ha ocurrido un error");   
 }

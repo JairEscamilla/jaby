@@ -25,6 +25,7 @@
 
         if(mysqli_num_rows($result) == 1){ // En caso de que solo haya un resultado, logeamos al user
             $template->setVariable("RESPUESTA", "logged");
+            $_SESSION['username'] = $username;
 
         }else 
             $template->setVariable("RESPUESTA", "error");
