@@ -31,6 +31,7 @@
     $query = "INSERT INTO Usuario VALUES('$username', '$password', false, '$filename', '$direccion', '$escolaridad', '$email', '$nombre', '$apPat', '$apMat', '$fecnac')";
 
     if(mysqli_query($con, $query)){ // INSERTAMOS EN LA BD Y REDIRECCIONAMOS A PANTALLA DE REGISTRO EXITOSO
+        $_SESSION['username'] = $username;
        header('location: registro_exitoso.html');
     }else{
         echo "Ha ocurrido un error";

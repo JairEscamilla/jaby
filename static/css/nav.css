@@ -12,6 +12,10 @@ a, a:hover{
     font-weight: 700;
 }
 
+a:hover{
+    text-decoration: none;
+}
+
 .logo{
     height: 2em;
     weight: auto;
@@ -22,6 +26,7 @@ nav ul li{
     padding: 1em;
     margin-top: 1em;
 }
+
 
 .navContent{
     position: fixed;
@@ -42,4 +47,24 @@ nav ul li{
     nav ul li{
         padding: 0.5em;
     }
+    .dropdown-toggle{
+        width: 150px !important;
+    }
+}
+
+.dropdown{
+    display: none;
+}
+
+@media screen and (max-width: 500px){
+    .dropdown{
+        display: block;
+    }
+    nav ul a{
+        display: none;
+    }
+}
+
+.card{
+    padding: 2em;
 }

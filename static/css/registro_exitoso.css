@@ -1,0 +1,30 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+.image-container{
+    height: 90vh;
+    width: 100vw;
+    background-image: url('../images/registro_exitoso.png');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+@media screen and (max-width: 500px){
+    .image-container{
+        background-image: url('../images/registro_exitoso_pequeño.png');
+    }
+    .btn{
+        font-size: 25px !important;
+    }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1350px){
+    .btn{
+        font-size: 40px !important;
+    }
+}

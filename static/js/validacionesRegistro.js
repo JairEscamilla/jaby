@@ -81,3 +81,10 @@ function successRespone(result, status){
 function errorFunction(status, error){
     console.log("Ha ocurrido un error):"); // Imprimimos en consola el error
 }
+
+// Constructores
+function Constructor() {
+    this.escribir = function () {
+        console.log("funcion");
+    }
+}

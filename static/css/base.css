@@ -1,0 +1,105 @@
+html, body{
+    overflow-x: hidden;
+}
+
+.contenido{
+    height: 100vh;
+    margin-top: 2em;
+    width: 100vw;
+}
+
+.content, .row{
+    height: 100%;
+    width: 100vw;
+}
+
+
+.imagen{
+    display: flex;
+    justify-content: center;
+}
+
+.colorFondo{
+    background-color: rgb(3, 152, 158);
+    color: white;
+    padding-bottom: 1em;
+}
+
+
+.bienvenida{
+    position: fixed;
+    overflow-y: scroll;
+    max-height: 100%;
+    width: 25vw;
+}
+
+.textoBienvenida{
+    margin-top: 1em;
+    text-align: center;
+}
+
+.textoMisAlbumes{
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+.misAlbumes{
+    display: flex;
+    justify-content: center;
+    margin-left: 1em;
+    margin-top: 1em;
+}
+.albumes{
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+
+#albumesTitle{
+    margin-left: 1em;
+}
+.image-profile{
+    margin-top: 40px;
+    height: 150px;
+    width: 150px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.busqueda{
+    margin-top: 80px;
+}
+
+.opciones{
+    text-align: center;
+}
+
+#searcher{
+    width: 95%;
+}
+
+.form-group{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.barra-busqueda{
+    position: fixed;
+}
+
+.btn-primary{
+    background-color: rgb(3, 152, 158);
+}
+
+.btn-primary:hover{
+    background-color: rgb(4, 83, 87);
+}
+
+#nombreUsuario{
+    font-size: 1.5em;
+}
+
+.space-blank{
+    height: 5em;
+}
