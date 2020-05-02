@@ -38,7 +38,7 @@
 
     if(mysqli_query($con, $query)){ // INSERTAMOS EN LA BD Y REDIRECCIONAMOS A PANTALLA DE REGISTRO EXITOSO
         $_SESSION['username'] = $username;
-       header('location: registro_exitoso.html');
+       header('location: mensaje_correcto.html');
     }else{
         echo "Ha ocurrido un error";
     }
