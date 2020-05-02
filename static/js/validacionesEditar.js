@@ -25,7 +25,7 @@ function validate(){ // Función de validacion de datos
     /*
         Validamos que los campos no estén vacíos
     */
-    if(form.username.value.length == 0 || form.password.value.length == 0 || form.email.value.length == 0 || form.nombre.value.length == 0 || form.apPat.value.length == 0  || form.apMat.value.length == 0 || form.escolaridad.value.length == 0 || form.direccion.value.length == 0){
+    if(form.password.value.length == 0 || form.email.value.length == 0 || form.nombre.value.length == 0 || form.apPat.value.length == 0  || form.apMat.value.length == 0 || form.escolaridad.value.length == 0 || form.direccion.value.length == 0){
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
