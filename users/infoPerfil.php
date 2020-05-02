@@ -24,6 +24,11 @@
         $template->setVariable("FECNAC", $fields['fecha_nacimiento']);
         $template->setVariable("IMAGEN", $fields['foto']);
 
+        $template->addBlockfile("LINKS_NAVEGACION", "NAVEGACION", "links_logged.html");
+        $template->setCurrentBlock("NAVEGACION");
+        $template->setVariable("FLAG", "");
+        $template->parseCurrentBlock("NAVEGACION");
+
         $template->show();
         mysqli_close($link);
     }else{  

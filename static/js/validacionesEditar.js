@@ -52,33 +52,3 @@ function validate(){ // Función de validacion de datos
     return retorno;
 }
 
-// Vamos a validar que solamente haya un unico username
-
-function validaUsername(){
-    var username =  document.registro.username.value; // Obtenemos el valor del username
-    $.ajax({ // Peticion AJAX para la validacion
-        url: 'validaUsername.php',
-        dataType: 'html',
-        type: 'POST',
-        async: true,
-        data: { username: username },
-        success: successRespone,
-        error: errorFunction
-    });
-}
-
-// Funcion en caso de que sea exitosa la peticion AJAX
-function successRespone(result, status){
-    document.getElementById("lblUsername").innerHTML = ""; // Limpiamos el HTML del label
-    document.getElementById("lblUsername").innerHTML = result; // Le asignamos el resultado al html de del label
-    if (result == "Username")
-        document.getElementById("sendButton").disabled = false;
-    else
-        document.getElementById("sendButton").disabled = true;
-}
-
-// Funcion en caso de que falle la peticion AJAX
-function errorFunction(status, error){
-    console.log("Ha ocurrido un error):"); // Imprimimos en consola el error
-}
-

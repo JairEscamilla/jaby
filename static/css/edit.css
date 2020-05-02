@@ -1,0 +1,52 @@
+.image-container-register{
+    background-image: url('../images/register.png');
+    background-repeat: no-repeat;
+    margin-top: 80px;
+    height: 90px;
+    width: auto;
+}
+
+.picture{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
+
+.container{
+    margin-top: 30px;
+}
+
+.pic{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 50px;
+}
+
+.imagen{
+    margin-top: -20px;
+}
+
+.picture-loaded{
+    width: 250px;
+    height: 250px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin-bottom: 50px;
+    /*margin-left: -10em;*/
+}
+
+
+
+form{
+    margin-bottom: 50px;
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{TITULO}</title>
+    <!-- ARCHIVOS NECESARIOS PARA USAR BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- HOJAS DE ESTILOS -->
+    <link rel="stylesheet" href="../static/css/edit.css">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="../static/images/favicon.png" />
+    <!-- SCRIPT PARA USAR SWEET ALERT -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
+</head>
+
+<body>
+    <!-- INICIO DE LA BARRA DE NAVEGACION -->
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../static/images/logo.png" class="logo">
+            </a>
+            <div class="navContent">
+                <ul>
+                    <a href="login.html">
+                        <li>Login</li>
+                    </a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- FIN DE LA BARRA DE NAVEGACION -->
+
+    <!-- CONTENEDOR DE LA IMAGEN DE REGISTRO -->
+    <div class="image-container-register"></div>
+
+    <!-- FORMULARIO DE REGISTRO -->
+    <form action="actualizar.php" method="POST" enctype="multipart/form-data" onsubmit="return validate()"
+        name="registro">
+        <div class="container">
+            <!-- NUEVA FILA -->
+            <div class="row">
+                <!-- NUEVA COLUMNA -->
+                <div class="col-sm">
+                    <div class="picture">
+                        <div class="pic" style="background-image: url('{IMAGEN}');"></div> <!-- IMAGEN DE PERFIL -->
+                    </div>
+                    <div class="picture">
+                        <div class="form-group imagen">
+                            <input name="file" type="file" class="form-control-file" id="exampleFormControlFile1" value="{DIR_IMAGE}">
+                        </div>
+                    </div>
+                    <div class="centrado">
+                        <div class="form-group">
+                            <label for="password" class="lbl">Password</label>
+                            <input name="password" type="password" class="form-control entradas" id="password"
+                                placeholder="Ingresa tu password" value="{PASSWORD}">
+                        </div>
+                    </div>
+                    <div class="centrado">
+                        <div class="form-group">
+                            <label for="email|" class="lbl">Email</label>
+                            <input name="email" type="email" class="form-control entradas" id="email|"
+                                placeholder="Ingresa tu email" value="{EMAIL}">
+                        </div>
+                    </div>
+
+                    <div class="centrado">
+                        <div class="form-group">
+                            <label for="nombre" class="lbl">Nombre</label>
+                            <input name="nombre" type="text" class="form-control entradas" id="nombre" placeholder="Ingresa tu nombre"
+                                value="{NOMBRE}">
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- NUEVA COLUMNA -->
+                <div class="col-sm form">
+                    <div class="centrado">
+                        <div class="form-group">
+                            <label for="apPat" class="lbl">Apellido paterno</label>
+                            <input name="apPat" type="text" class="form-control entradas" id="apPat"
+                                placeholder="Ingresa tu apellido paterno" value="{AP_PAT}">
+                        </div>
+                    </div>
+                    <div class="centrado">
+                        <div class="form-group">
+                            <label for="apMat" class="lbl">Apellido materno</label>
+                            <input name="apMat" type="text" class="form-control entradas" id="apMat"
+                                placeholder="Ingresa tu apellido materno" value="{AP_MAT}">
+                        </div>
+                    </div>
+                    <div class="centrado">
+                        <div class="form-group">
+                            <label for="escolaridad" class="lbl">Escolaridad</label>
+                            <input name="escolaridad" type="text" class="form-control entradas" id="escolaridad"
+                                placeholder="Ingresa tu escolaridad" value="{ESCOLARIDAD}">
+                        </div>
+                    </div>
+                    <div class="centrado">
+                        <div class="form-group">
+                            <label for="example-date-input" class="lbl">Fecha de nacimiento</label>
+                            <input name="fecnac" class="form-control entradas" type="date" value="2011-08-19"
+                                id="example-date-input">
+                        </div>
+                    </div>
+                    <div class="centrado">
+                        <div class="form-group">
+                            <label for="direccion" class="lbl">Dirección</label>
+                            <input name="direccion" type="text" class="form-control entradas" id="direccion"
+                                placeholder="Ingresa tu dirección" value="{DIRECCION}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="centrado">
+            <button id="sendButton" type="submit" class="btn btn-success">Actualizar</button>
+        </div>
+    </form>
+
+    <script src="../static/js/avatar.js"></script>
+    <script src="../static/js/validacionesEditar.js"></script>
+</body>
+
+</html>
