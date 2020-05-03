@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaby</title>
+    <!-- ARCHIVOS NECESARIOS PARA USAR BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="../static/images/favicon.png" />
+    <!-- HOJAS DE ESTILOS -->
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/album_nuevo.css">
+    <!-- LIBRERRIA PARA SWEET ALERT -->+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    
+</head>
+
+<body>
+    <!-- INICIO DE LA BARRA DE NAVEGACION -->
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../static/images/logo.png" class="logo">
+            </a>
+            <div class="navContent">
+                <ul>
+                    {LINKS_NAVEGACION}
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- FIN DE LA BARRA DE NAVEGACION -->
+
+    <!-- CONTENEDOR DE LA IMAGEN DE REGISTRO -->
+    <div class="image-container-register"></div>
+
+    <!-- FORMULARIO DE REGISTRO -->
+    <form action="crear_album.php" method="POST" enctype="multipart/form-data" onsubmit="return validate()"
+        name="nuevo">
+        <div class="container">
+            <!-- NUEVA FILA -->
+            <div class="row">
+                <!-- NUEVA COLUMNA -->
+                <div class="col-sm">
+                    <div class="picture">
+                        <div class="pic"></div> <!-- IMAGEN DE PERFIL -->
+                    </div>
+                    <div class="picture">
+                        <div class="form-group imagen">
+                            <input name="file" type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NUEVA COLUMNA -->
+                <div class="col-sm form">
+                    <div class="centrado">
+                        <div class="form-group">
+                            <label for="nombre" class="lbl">Titulo</label>
+                            <input name="nombre" type="text" class="form-control entradas" id="nombre"
+                                placeholder="Ingresa el titulo del álbum">
+                        </div>
+                    </div>
+                    <div class="centrado">
+                        <div class="form-group">
+                            <label for="apPat" class="lbl">Tema</label>
+                            <input name="tema" type="text" class="form-control entradas" id="apPat"
+                                placeholder="Ingresa el tema del álbum">
+                        </div>
+                    </div>
+                    <div class="centrado">
+                        <div class="form-group">
+                            <label for="apMat" class="lbl">Descripción</label>
+                            <input name="descripcion" type="text" class="form-control entradas" id="apMat"
+                                placeholder="Ingresa una descripcion para el álbum">
+                        </div>
+                    </div>
+                    <div class="centrado radio">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-secondary active">
+                                <input type="radio" name="options" id="option1" autocomplete="off" value="0" checked> Público
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="options" id="option3" autocomplete="off" value="1" > Privado
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="centrado-button">
+            <button id="sendButton" type="submit" class="btn btn-success">Crear álbum</button>
+        </div>
+    </form>
+
+    <script src="../static/js/validacionesCrearAlbum.js"></script>
+    <script src="../static/js/avatar.js"></script>
+
+</body>
+
+</html>

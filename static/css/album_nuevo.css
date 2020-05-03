@@ -1,10 +1,10 @@
 html, body{
     background-color: rgb(3, 152, 158);
-    overflow-x: hidden;
-}
+}   
+
 
 .image-container-register{
-    background-image: url('../images/editar.png');
+    background-image: url('../images/nuevo_album.png');
     background-repeat: no-repeat;
     margin-top: 80px;
     height: 90px;
@@ -26,13 +26,10 @@ html, body{
 }
 
 .pic{
+    background-image: url('../images/nuevo_album_cover.png');
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    margin-bottom: 50px;
+    width: 50%;
+    height: 40vh;
 }
 
 .imagen{
@@ -56,38 +53,27 @@ form{
     margin-bottom: 50px;
 }
 
-
-
 .centrado{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: white;
     font-weight: 700;
     font-size: 20px;
 }
 
-
-.entradas{
-    width: 30em;
-}
-
-/* Estilos para pantallas de minimo 360px y maximo 500px de anchura */
-@media screen and (min-width: 360px) and  (max-width: 500px){
-    .entradas{
-        width: 20em;
-    }
-}
-
-/* Estilos para pantallas de maximo 360px de anchura */
-@media screen and (max-width: 360px){
-    .entradas{
-        width: 15em;
-    }
+.centrado-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
 }
 
 #sendButton{
-    margin-top: 20px;
-    font-size: large;
-    padding: 0.4em 1.5em;
+    font-size: larger;
+    font-weight: 500;
+    padding: 0.5em;
+}
+
+.radio{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

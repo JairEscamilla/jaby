@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaby</title>
+    <!-- ARCHIVOS NECESARIOS PARA USAR BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="../static/images/favicon.png" />
+    <!-- HOJAS DE ESTILOS -->
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/ver_album.css">
+    <!-- LIBRERRIA PARA SWEET ALERT -->+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+</head>
+<body>
+    <!-- INICIO DE LA BARRA DE NAVEGACION -->
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../static/images/logo.png" class="logo">
+            </a>
+            <div class="navContent">
+                <ul>
+                    {LINKS_NAVEGACION}
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- FIN DE LA BARRA DE NAVEGACION -->
+    
+    <!-- COMENZANDO CON LAS COLUMNAS NECESARIAS -->
+    <div class="row">
+        <div class="col-sm">
+           <div class="image-container" style="background-image: url('../static/images/album.jpg');">
+                <div class="titulo">
+                    <h3 id="titulo">Titulo del album</h3>
+                </div>    
+                <div class="informacion">
+                    <h5>Titular</h5>
+                    <h5>Tema</h5>
+                    <h5>YYYY-MM-DD</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm fotos">
+            <!-- Comenzando a desplegar las fotos  -->
+            <div class="elemento">
+                <div class="tarjeta">
+                    <div class="foto-album" style="background-image: url('../static/images/c1.jpeg');"></div>
+                    <div class="contenido-tarjeta">
+                        <div class="calificaciones">
+                            <form>
+                                <p class="clasificacion">
+                                    <input id="radio1" type="radio" name="estrellas" value="5">
+                                    <label for="radio1">★</label>
+                                    <input id="radio2" type="radio" name="estrellas" value="4">
+                                    <label for="radio2">★</label>
+                                    <input id="radio3" type="radio" name="estrellas" value="3">
+                                    <label for="radio3">★</label>
+                                    <input id="radio4" type="radio" name="estrellas" value="2">
+                                    <label for="radio4">★</label>
+                                    <input id="radio5" type="radio" name="estrellas" value="1">
+                                    <label for="radio5">★</label>
+                                </p>
+                            </form>
+                        </div>
+                        <hr>
+                        <h5>Comentarios</h5>
+                        <div class="comentarios">
+                            <div class="card comment tarjeta">
+                                <div class="encabezado">
+                                    <div class="imagen-perfil" style="background-image: url('../static/uploads/me.jpg');"></div>
+                                    <div class="user-container">
+                                        <p class="user">Allan Jair Escamilla Hernández</p>
+                                    </div>
+                                </div>
+                                <div class="cuerpo-comentario">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia est, praesentium tenetur voluptate modi facere unde! Esse quod quo necessitatibus, ad tempore tenetur quisquam nemo ipsa itaque et voluptatibus nesciunt?</p>
+                                </div>
+                            </div>
+                            <div class="card comment tarjeta">
+                                <div class="encabezado">
+                                    <div class="imagen-perfil" style="background-image: url('../static/uploads/me.jpg');"></div>
+                                    <div class="user-container">
+                                        <p class="user">Allan Jair Escamilla Hernández</p>
+                                    </div>
+                                </div>
+                                <div class="cuerpo-comentario">
+                                    <p>No, la neta no me gustó bro</p>
+                                </div>
+                            </div>
+                            <div class="card comment tarjeta">
+                                <div class="encabezado">
+                                    <div class="imagen-perfil" style="background-image: url('../static/uploads/me.jpg');"></div>
+                                    <div class="user-container">
+                                        <p class="user">Allan Jair Escamilla Hernández</p>
+                                    </div>
+                                </div>
+                                <div class="cuerpo-comentario">
+                                    <p>Este es un comentario de pruebaaas</p>
+                                </div>
+                            </div>
+                            <div class="hacer-comentario">
+                                <form class="form-inline">
+                                    <div class="form-group mx-sm-3 mb-2">
+                                        <label for="comentary" class="sr-only">Comentario...</label>
+                                        <input type="text" class="form-control" id="comentary" placeholder="Comentario...">
+                                    </div>
+                                    <button type="button" class="btn btn-primary mb-2">Comentar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="elemento">
+                <div class="tarjeta">
+                    <div class="foto-album" style="background-image: url('../static/images/c1.jpeg');"></div>
+                    <div class="contenido-tarjeta">
+                        <p>asd</p>
+                        <p>asd</p>
+                        <p>asd</p>
+                        <p>asd</p>
+                        <p>asd</p>
+                        <p>asd</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

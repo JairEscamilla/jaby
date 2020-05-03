@@ -15,10 +15,9 @@
         $result = mysqli_query($link, $query);
         $query_result = mysqli_fetch_assoc($result);
 
-        $template->addBlockfile("LINKS_NAVEGACION", "NAVEGACION", "links_logged.html");
-        $template->setCurrentBlock("NAVEGACION");
-        $template->setVariable("FLAG", "");
-        $template->parseCurrentBlock("NAVEGACION");
+
+
+
         $template->addBlockfile("CONTENIDO", "CONTENT", "contenedorBienvenida.html");
         $template->setCurrentBlock("CONTENT");
         $template->setVariable("FLAG", "");
@@ -26,8 +25,29 @@
         $template->setVariable("NOMBRE", $query_result['nombre']);
         $template->setVariable("AP_PAT", $query_result['ap_paterno']);
         $template->setVariable("AP_MAT", $query_result['ap_materno']);
-        $template->setVariable("USERNAME", $username);
-        $template->parseCurrentBlock("CONTENT");
+
+            $template->addBlockfile("ALBUMES", "ALBUMES", "card_album.html");
+            $template->setCurrentBlock("ALBUMES");
+            $query = "SELECT titulo, descripcion FROM Album WHERE username = '$username'";
+            $result = mysqli_query($link, $query);
+
+            while($line = mysqli_fetch_assoc($result)){
+                $template->setCurrentBlock("ALBUM");
+                $template->setVariable("TITULO", $line['titulo']);
+                $template->setVariable("DESCRIPCION", $line['descripcion']);
+                $template->parseCurrentBlock("ALBUM");
+            }
+            $template->parseCurrentBlock("ALBUMES");
+
+
+            $template->parseCurrentBlock("CONTENT");
+
+            $template->addBlockfile("LINKS_NAVEGACION", "NAVEGACION", "links_logged.html");
+            $template->setCurrentBlock("NAVEGACION");
+            $template->setVariable("FLAG", "");
+            $template->parseCurrentBlock("NAVEGACION");
+
+            
         mysqli_close($link);
     }else{
         $template->addBlockfile("LINKS_NAVEGACION", "NAVEGACION", "links_unlogged.html");

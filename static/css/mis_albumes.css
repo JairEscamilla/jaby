@@ -1,0 +1,65 @@
+.image-container{
+    background-image: url('../images/mis_albumes.png');
+    background-repeat: no-repeat;
+    margin-top: 50px;
+    height: 90px;
+    width: auto;
+}
+
+.content{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.bottom{
+    display: flex;
+}
+
+.bottom *{
+    padding: 0.8em;
+}
+.b{
+    color: #6c757d !important;
+    font-weight: bold;
+}
+
+.bottom a, .bottom a:hover{
+    color: rgb(30, 82, 112);
+}
+
+.image-container-albums{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+}
+
+.contenedor-imagen{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.card:hover{
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.card{
+    margin-bottom: 2em;
+    height: 80vh;
+    width: 35vw;
+}
+
+#invitacion{
+    color: #28a745;
+    font-weight: bolder;
+}
+
+.invitacion{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+}
