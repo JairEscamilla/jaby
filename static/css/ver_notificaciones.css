@@ -1,0 +1,23 @@
+.image-container{
+    background-image: url('../images/subir_foto.png');
+    background-repeat: no-repeat;
+    margin-top: 80px;
+    height: 90px;
+    width: auto;
+}
+
+.card{
+    width: 50%;
+}
+
+.card-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.card-link, .card-link:hover{
+    color: #007bff;
+    padding: 2em;
+}
