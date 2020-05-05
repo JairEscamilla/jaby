@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jaby</title>
-    <!-- ARCHIVOS NECESARIOS PARA USAR BOOTSTRAP -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -16,47 +16,30 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="../static/images/favicon.png" />
     <!-- HOJAS DE ESTILOS -->
+    <link rel="stylesheet" href="../static/css/register.css">
+    <link rel="stylesheet" href="../static/css/login.css">
     <link rel="stylesheet" href="../static/css/nav.css">
-    <link rel="stylesheet" href="../static/css/mis_albumes.css">
-    <!-- LIBRERRIA PARA SWEET ALERT -->+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
 </head>
+
 <body>
-    <!-- INICIO DE LA BARRA DE NAVEGACION -->
-    <header>
-        <nav class="navbar navbar-expand-lg fixed-top">
-            <a class="navbar-brand" href="../index.html">
-                <img src="../static/images/logo.png" class="logo">
-            </a>
-            <div class="navContent">
-                <ul>
-                    {LINKS_NAVEGACION}
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <!-- FIN DE LA BARRA DE NAVEGACION -->
-    
-    <!-- CONTENEDOR DE LA IMAGEN -->
-    <div class="image-container"></div>
 
-    <!-- CONTENEDOR DE LOS ALBUMES -->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <h2>Públicos</h2>
-                {PUBLICOS}
-            </div>
-            <div class="col-sm">
-                <h2>Privados</h2>
-                {PRIVADOS}
-            </div>
-        </div>
-    </div>
 
+    <script>
+        $(document).ready(function () {
+            Swal.fire({
+                title: 'Se ha subido la nueva foto',
+                text: 'Espera a que un administrador la autorice',
+                icon: 'success',
+                onClose: () => {
+                    window.location.href = "../users/profile.php";
+                }
+            })
+
+        });
+    </script>
 </body>
-</html>
 
+</html>

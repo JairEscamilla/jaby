@@ -16,17 +16,17 @@
             echo "Ha ocurrido un error";
             return;
         }
-        $query = "SELECT username, password FROM Usuario WHERE username = '$username' AND password = '$password'";
+        $query = "SELECT username, password, tipo_usuario FROM Usuario WHERE username = '$username' AND password = '$password'";
         
         if (!($result = mysqli_query($link, $query))) { // Obtenemos el resultado del query
             echo mysqli_error($link);
             return;
         }
-
+        $fields = mysqli_fetch_assoc($result);
         if(mysqli_num_rows($result) == 1){ // En caso de que solo haya un resultado, logeamos al user
             $template->setVariable("RESPUESTA", "logged");
             $_SESSION['username'] = $username;
-
+            $_SESSION['tipo_usuario'] = $fields['tipo_usuario'];
         }else 
             $template->setVariable("RESPUESTA", "error");
         mysqli_close($link); // Cerramos la variable

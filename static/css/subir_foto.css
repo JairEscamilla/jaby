@@ -1,0 +1,27 @@
+.image-container{
+    background-image: url('../images/subir_foto.png');
+    background-repeat: no-repeat;
+    margin-top: 80px;
+    height: 90px;
+    width: auto;
+}
+
+.formulario{
+    margin-top: 3em;
+}
+
+.picture{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.button-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#title{
+    font-size: x-large;
+}

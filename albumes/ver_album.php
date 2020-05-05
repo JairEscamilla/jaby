@@ -16,6 +16,16 @@
     $template->setVariable("FECHA", $fields['fecha_publicacion']);
     $template->setVariable("IMAGEN", $fields['cover']);
 
+    if(isset($_SESSION['username'])){
+        if ($_SESSION['tipo_usuario'] == 1)
+            $template->addBlockfile("LINKS_NAVEGACION", "NAVEGACION", "../links_logged_admin.html");
+        else
+            $template->addBlockfile("LINKS_NAVEGACION", "NAVEGACION", "../links_logged.html");
+        $template->setCurrentBlock("NAVEGACION");
+        $template->setVariable("FLAG", "");
+        $template->parseCurrentBlock("NAVEGACION");
+    }
+
     mysqli_close($link);
     $template->show();
     

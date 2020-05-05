@@ -22,7 +22,10 @@
         $template->setVariable("AP_MAT", $fields['ap_materno']);
         $template->setVariable("ESCOLARIDAD", $fields['escolaridad']);
         $template->setVariable("DIRECCION", $fields['direccion']);
-        $template->addBlockfile("LINKS_NAVEGACION", "NAVEGACION", "links_logged.html");
+        if ($_SESSION['tipo_usuario'] == 1)
+            $template->addBlockfile("LINKS_NAVEGACION", "NAVEGACION", "links_logged_admin.html");
+        else
+            $template->addBlockfile("LINKS_NAVEGACION", "NAVEGACION", "links_logged.html");
         $template->setCurrentBlock("NAVEGACION");
         $template->setVariable("FLAG", "");
         $template->parseCurrentBlock("NAVEGACION");
