@@ -22,6 +22,8 @@
             $template->setVariable("ALBUM", $fields2['titulo']);
             $template->setVariable("PROPIETARIO", $fields2['username']);
             $template->setVariable("IMAGEN", $fields['direccion_foto']);
+            $template->setVariable("ID_FOTO_AP", $fields['id_foto']);
+            $template->setVariable("CARD", $fields['id_foto']);
             $template->parseCurrentBlock("FOTO");
         }
         $template->parseCurrentBlock("FOTOS");
