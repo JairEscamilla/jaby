@@ -18,6 +18,8 @@
     while($fields = mysqli_fetch_assoc($result)){
         $template->setCurrentBlock("NOTIFICACION");
         $template->setVariable("TEXTO_NOTIFICACION", $fields['notificacion']);
+        $template->setVariable("ID_NOTIFICACION", $fields['id_notificacion']);
+        $template->setVariable("ID_NOTIF", $fields['id_notificacion']);
         $template->parseCurrentBlock("NOTIFICACION");
     }
 
