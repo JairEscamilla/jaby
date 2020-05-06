@@ -1,5 +1,7 @@
 function comentar(id_foto){
     var comentario = document.getElementById(id_foto).value;
+    if(comentario.length == 0)
+        return;
     $.ajax({ // Peticion AJAX para la validacion
         url: 'comentar.php',
         foto: id_foto,
