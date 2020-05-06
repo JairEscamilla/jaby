@@ -35,7 +35,19 @@
     while($fields = mysqli_fetch_assoc($result)){
         $template->setCurrentBlock("FOTO");
         $template->setVariable("URL_IMAGEN", $fields['direccion_foto']);
+
+        $id_foto = $fields['id_foto'];
+        $query2 = "SELECT comentario, usu.username, usu.foto FROM Comentarios com INNER JOIN Usuario usu USING(username) WHERE id_foto = '$id_foto'";
+        $result2 = mysqli_query($link, $query2);
+        $comentarios = "";
+        while($fields2 = mysqli_fetch_assoc($result2)){
+            $comentarios = $comentarios.crearCadena($fields2['foto'], $fields2['username'], $fields2['comentario']);
+        }
+        $template->setVariable("COMENTARIOS", $comentarios);
+
+
         $template->parseCurrentBlock("FOTO");
+        
     }
     $template->parseCurrentBlock("FOTOS");
 
@@ -43,5 +55,21 @@
     $template->show();
     
 
+    function crearCadena($imagen, $usuario, $comentario){
+        $base = "
+            <div class='card comment tarjeta'>
+                <div class='encabezado'>
+                    <div class='imagen-perfil' style='background-image: url(\"".$imagen."\");'></div>
+                    <div class='user-container'>
+                        <p class='user'>".$usuario."</p>
+                    </div>
+                </div>
+                <div class='cuerpo-comentario'>
+                    <p>".$comentario."</p>
+                </div>
+            </div>
+        ";
 
+        return $base;
+    }
 ?>
