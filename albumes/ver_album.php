@@ -26,6 +26,19 @@
         $template->parseCurrentBlock("NAVEGACION");
     }
 
+    $query = "SELECT id_foto, direccion_foto FROM Fotos WHERE id_album = '$album' AND status = 1";
+    $result = mysqli_query($link, $query);
+
+    $template->addBlockfile("FOTOS", "FOTOS", "card_foto.html");
+    $template->setCurrentBlock("FOTOS");
+
+    while($fields = mysqli_fetch_assoc($result)){
+        $template->setCurrentBlock("FOTO");
+        $template->setVariable("URL_IMAGEN", $fields['direccion_foto']);
+        $template->parseCurrentBlock("FOTO");
+    }
+    $template->parseCurrentBlock("FOTOS");
+
     mysqli_close($link);
     $template->show();
     

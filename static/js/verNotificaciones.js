@@ -14,7 +14,6 @@ function verNotificacion(id_notificacion){
 
 function successRespone1(response, status){
     $("#"+response).slideUp();
-    console.log("¿QUe pez?");
     
 }
 

@@ -12,6 +12,9 @@ $(document).ready(function(){
 
 function successRespone(response, status){
     $(".badge-light").html(response);
+    if(response == "0"){
+        $(".badge-light").html("");
+    }
 }
 
 function errorFunction(error, status){
