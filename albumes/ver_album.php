@@ -44,7 +44,7 @@
             $comentarios = $comentarios.crearCadena($fields2['foto'], $fields2['username'], $fields2['comentario']);
         }
         $template->setVariable("COMENTARIOS", $comentarios);
-
+        $template->setVariable("ID_FOTO", $id_foto);
 
         $template->parseCurrentBlock("FOTO");
         

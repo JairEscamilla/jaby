@@ -22,14 +22,17 @@
             <hr>
             <h5>Comentarios</h5>
             <div class="comentarios">
-                {COMENTARIOS}
+                <div class="comment">
+                    {COMENTARIOS}
+                </div>
+                <div class="extra-comment" id="{ID_FOTO}-container"></div>
                 <div class="hacer-comentario">
                     <form class="form-inline">
                         <div class="form-group mx-sm-3 mb-2">
                             <label for="comentary" class="sr-only">Comentario...</label>
-                            <input type="text" class="form-control" id="comentary" placeholder="Comentario...">
+                            <input type="text" class="form-control input-comment" id="{ID_FOTO}" placeholder="Comentario...">
                         </div>
-                        <button type="button" class="btn btn-primary mb-2">Comentar</button>
+                        <button type="button" class="btn btn-primary mb-2" onclick="return comentar({ID_FOTO})">Comentar</button>
                     </form>
                 </div>
             </div>
