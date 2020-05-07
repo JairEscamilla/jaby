@@ -103,3 +103,29 @@ html, body{
 .space-blank{
     height: 5em;
 }
+
+.info-album{
+    display: flex;
+    align-items: center;
+}
+
+.propietario{
+    padding-left: 1em;
+    margin-top: 1em;
+}
+
+.filtro{
+    width: 4.6em;
+    font-size: smaller;
+}
+
+.contenedor{
+    width: 100%;
+    height: auto;
+    background-position: center;
+    background-size: cover;
+}
+
+.misAlbumes{
+    margin-bottom: 3em;
+}

@@ -5,7 +5,7 @@
     $id_foto = $_POST['id_foto'];
     $comentario = $_POST['comentario'];
     if(!isset($_SESSION['username'])){
-        echo "Tiene que logearse un usuario";
+        echo "Tiene que loggearse un usuario";
         return;
     }
     $username = $_SESSION['username'];

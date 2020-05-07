@@ -7,6 +7,13 @@
     $link = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
     $query = "SELECT titulo, username, tema, fecha_publicacion, cover FROM Album WHERE id_album = '$album'";
 
+    $queryVisitas = "SELECT visitas FROM Album WHERE id_album = '$album'";
+    $resultVisitas = mysqli_query($link, $queryVisitas);
+    $fieldsVisitas = mysqli_fetch_assoc($resultVisitas);
+    $visitas = $fieldsVisitas['visitas'];
+    $visitas = $visitas + 1;
+    mysqli_query($link, "UPDATE Album SET visitas = '$visitas' WHERE id_album = '$album'");
+
     $result = mysqli_query($link, $query);
     $fields = mysqli_fetch_assoc($result);
 

@@ -22,139 +22,39 @@
             </div>
         </div>
         <div class="col-6 albumes">
-            <h3 id = "albumesTitle">Álbumes de todos los usuarios</h3>
-            <div class="misAlbumes">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Titulo de álbum</h5>
-                        <p class="card-text">Descripcion.</p>
-                        <a href="#" class="btn btn-primary">Ver álbum</a>
-                    </div>
-                </div>
+            <h3 id = "albumesTitle">Álbum(es)</h3>
+            <div class="busquedas">
+                {ALBUMES_USUARIOS}
             </div>
-            <div class="misAlbumes">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Titulo de álbum</h5>
-                        <p class="card-text">Descripcion.</p>
-                        <a href="#" class="btn btn-primary">Ver álbum</a>
-                    </div>
-                </div>
-            </div>
-            <div class="misAlbumes">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Titulo de álbum</h5>
-                        <p class="card-text">Descripcion.</p>
-                        <a href="#" class="btn btn-primary">Ver álbum</a>
-                    </div>
-                </div>
-            </div>
-            <div class="misAlbumes">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Titulo de álbum</h5>
-                        <p class="card-text">Descripcion.</p>
-                        <a href="#" class="btn btn-primary">Ver álbum</a>
-                    </div>
-                </div>
-            </div>
-            <div class="misAlbumes">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Titulo de álbum</h5>
-                        <p class="card-text">Descripcion.</p>
-                        <a href="#" class="btn btn-primary">Ver álbum</a>
-                    </div>
-                </div>
-            </div>
-            <div class="misAlbumes">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Titulo de álbum</h5>
-                        <p class="card-text">Descripcion.</p>
-                        <a href="#" class="btn btn-primary">Ver álbum</a>
-                    </div>
-                </div>
-            </div>
-            <div class="misAlbumes">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Titulo de álbum</h5>
-                        <p class="card-text">Descripcion.</p>
-                        <a href="#" class="btn btn-primary">Ver álbum</a>
-                    </div>
-                </div>
-            </div>
-            <div class="misAlbumes">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Titulo de álbum</h5>
-                        <p class="card-text">Descripcion.</p>
-                        <a href="#" class="btn btn-primary">Ver álbum</a>
-                    </div>
-                </div>
-            </div>
-            <div class="misAlbumes">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Titulo de álbum</h5>
-                        <p class="card-text">Descripcion.</p>
-                        <a href="#" class="btn btn-primary">Ver álbum</a>
-                    </div>
-                </div>
-            </div>
-            <div class="misAlbumes">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Titulo de álbum</h5>
-                        <p class="card-text">Descripcion.</p>
-                        <a href="#" class="btn btn-primary">Ver álbum</a>
-                    </div>
-                </div>
-            </div>
-            <div class="misAlbumes">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Titulo de álbum</h5>
-                        <p class="card-text">Descripcion.</p>
-                        <a href="#" class="btn btn-primary">Ver álbum</a>
-                    </div>
-                </div>
-            </div>
-            <div class="misAlbumes">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Titulo de álbum</h5>
-                        <p class="card-text">Descripcion.</p>
-                        <a href="#" class="btn btn-primary">Ver álbum</a>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
         <div class="col-3 busqueda">
             <div class="barra-busqueda">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="searcher" placeholder="Ingresa aquí tu búsqueda">
-                </div>
-                <div class="opciones">
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-secondary filtro">
-                            <input type="radio" name="options" id="option1" autocomplete="off" class="radio"> Nombre
-                        </label>
-                        <label class="btn btn-secondary filtro">
-                            <input type="radio" name="options" id="option2" autocomplete="off" class="radio"> Título
-                        </label>
-                        <label class="btn btn-secondary filtro">
-                            <input type="radio" name="options" id="option3" autocomplete="off" class="radio"> Tema
-                        </label>
-                        <label class="btn btn-secondary filtro">
-                            <input type="radio" name="options" id="option3" autocomplete="off" class="radio"> Fecha
-                        </label>
+                <form name= "formulario">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="searcher" name="searcher" placeholder="Ingresa aquí tu búsqueda" onkeyup="buscador()">
                     </div>
-                </div>
+                    <div class="opciones">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-secondary filtro active">
+                                <input type="radio" name="options" id="option1" autocomplete="off" class="radio active" value="nombre" checked> Usuario
+                            </label>
+                            <label class="btn btn-secondary filtro">
+                                <input type="radio" name="options" id="option2" autocomplete="off" class="radio" value="titulo"> Título
+                            </label>
+                            <label class="btn btn-secondary filtro">
+                                <input type="radio" name="options" id="option3" autocomplete="off" class="radio" value="tema"> Tema
+                            </label>
+                            <label class="btn btn-secondary filtro">
+                                <input type="radio" name="options" id="option3" autocomplete="off" class="radio" value="fecha"> Fecha
+                            </label>
+                            <label class="btn btn-secondary filtro">
+                                <input type="radio" name="options" id="option3" autocomplete="off" class="radio" value="todos"> Todos
+                            </label>
+                        </div>
+                    </div>
+
+                </form>
             </div>
         </div>
 

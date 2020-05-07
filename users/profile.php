@@ -28,17 +28,36 @@
 
             $template->addBlockfile("ALBUMES", "ALBUMES", "card_album.html");
             $template->setCurrentBlock("ALBUMES");
-            $query = "SELECT titulo, descripcion FROM Album WHERE username = '$username'";
+            $query = "SELECT titulo, descripcion, id_album FROM Album WHERE username = '$username'";
             $result = mysqli_query($link, $query);
 
             while($line = mysqli_fetch_assoc($result)){
                 $template->setCurrentBlock("ALBUM");
                 $template->setVariable("TITULO", $line['titulo']);
                 $template->setVariable("DESCRIPCION", $line['descripcion']);
+                $template->setVariable("LINK", $line['id_album']);
                 $template->parseCurrentBlock("ALBUM");
             }
             $template->parseCurrentBlock("ALBUMES");
 
+            
+            $template->addBlockfile("ALBUMES_USUARIOS", "ALBUMES_USUARIOS", "card_album2.html");
+            $template->setCurrentBlock("ALBUMES_USUARIOS");
+            $query2 = "SELECT titulo, descripcion, id_album, visitas, username, cover FROM Album WHERE tipo = 0";
+            $result2 = mysqli_query($link, $query2);
+            
+            while($fields = mysqli_fetch_assoc($result2)){
+                $template->setCurrentBlock("TODOS_ALBUMES");
+                $template->setVariable("TITULO2", $fields['titulo']);
+                $template->setVariable("DESCRIPCION2", $fields['descripcion']);
+                $template->setVariable("PROPIETARIO", $fields['username']);
+                $template->setVariable("VISITAS", $fields['visitas']);
+                $template->setVariable("LINK2", $fields['id_album']);
+                $template->setVariable("IMAGEN", $fields['cover']);
+                $template->parseCurrentBlock("TODOS_ALBUMES");
+            }
+
+            $template->parseCurrentBlock("ALBUMES_USUARIOS");
 
             $template->parseCurrentBlock("CONTENT");
 

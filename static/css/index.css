@@ -107,3 +107,10 @@ html, body{
     align-items: center;
     margin-top: 10px;
 }
+
+.link-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.3em;
+}
+

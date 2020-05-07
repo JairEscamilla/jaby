@@ -4,14 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jaby</title>
-    <!-- Incluimos los arhivos necesarios para usar Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="static/css/index.css">
-        <link rel="stylesheet" href="static/css/nav.css">
-        <link rel="icon" type="image/png" href="static/images/favicon.png" />
+            <!-- ARCHIVOS NECESARIOS PARA USAR BOOTSTRAP -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+                integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+            <!-- HOJAS DE ESTILOS -->
+            <link rel="stylesheet" href="static/css/nav.css">
+            <link rel="stylesheet" href="static/css/index.css">
+            <!-- FAVICON -->
+            <link rel="icon" type="image/png" href="static/images/favicon.png" />
+            <!-- SCRIPT PARA USAR SWEET ALERT -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+            <!-- jquery -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
 </head>
 <body>
     <!-- INICIO DE LA BARRA DE NAVEGACION -->
@@ -87,32 +100,39 @@
                 <div class="col-sm search-form">
                     <div class="title"></div>
                     <h3 id="searchTitle" >Búsca tu álbum ideal</h3>
-                    <form>
+                    <form action="users/index_busqueda.php" method="GET" name="formulario">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="searcher" placeholder="Ingresa aquí tu búsqueda">
+                            <input type="text" class="form-control" id="searcher" name="searcher" placeholder="Ingresa aquí tu búsqueda">
                         </div>
                         <div class="opciones">
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary filtro">
-                                    <input type="radio" name="options" id="option1" autocomplete="off" class="radio"> Nombre
+                                <label class="btn btn-secondary filtro active">
+                                    <input type="radio" name="options" id="option1" autocomplete="off" class="radio" value="nombre" checked>
+                                    Usuario
                                 </label>
                                 <label class="btn btn-secondary filtro">
-                                    <input type="radio" name="options" id="option2" autocomplete="off" class="radio"> Título
+                                    <input type="radio" name="options" id="option2" autocomplete="off" class="radio" value="titulo"> Título
                                 </label>
                                 <label class="btn btn-secondary filtro">
-                                    <input type="radio" name="options" id="option3" autocomplete="off" class="radio"> Tema
+                                    <input type="radio" name="options" id="option3" autocomplete="off" class="radio" value="tema"> Tema
                                 </label>
                                 <label class="btn btn-secondary filtro">
-                                    <input type="radio" name="options" id="option3" autocomplete="off" class="radio"> Fecha
+                                    <input type="radio" name="options" id="option3" autocomplete="off" class="radio" value="fecha"> Fecha
+                                </label>
+                                <label class="btn btn-secondary filtro">
+                                    <input type="radio" name="options" id="option3" autocomplete="off" class="radio" value="todos"> Todos
                                 </label>
                             </div>
                         </div>
 
                         <div class="send-button">
-                            <button type="button" class="btn btn-success">Búscar</button>
+                            <button type="submit" class="btn btn-success">Búscar</button>
                         </div>
                     </form>
                     <!-- TERMINANDO FORMULARIO DE BUSQUEDA -->
+                    <div class="link-container">
+                        <a href="users/index_busqueda.php">Ver todos los álbumes</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -120,5 +140,5 @@
 
     <!-- SCRIPTS -->
     <script src="static/js/carousel.js"></script>
-</body>
+    
 </html>
