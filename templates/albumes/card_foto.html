@@ -4,18 +4,18 @@
         <div class="foto-album" style="background-image: url('{URL_IMAGEN}');"></div>
         <div class="contenido-tarjeta">
             <div class="calificaciones">
-                <form>
+                <form name="formulario" >
                     <p class="clasificacion">
-                        <input id="radio1" type="radio" name="estrellas" value="5">
-                        <label for="radio1">★</label>
-                        <input id="radio2" type="radio" name="estrellas" value="4">
-                        <label for="radio2">★</label>
-                        <input id="radio3" type="radio" name="estrellas" value="3">
-                        <label for="radio3">★</label>
-                        <input id="radio4" type="radio" name="estrellas" value="2">
-                        <label for="radio4">★</label>
-                        <input id="radio5" type="radio" name="estrellas" value="1">
-                        <label for="radio5">★</label>
+                        <input id="radio5-{ID_FOTO}" type="radio" name="estrellas-{ID_FOTO}" value="5/{ID_FOTO}" >
+                        <label for="radio5-{ID_FOTO}">★</label>
+                        <input id="radio4-{ID_FOTO}" type="radio" name="estrellas-{ID_FOTO}" value="4/{ID_FOTO}">
+                        <label for="radio4-{ID_FOTO}">★</label>
+                        <input id="radio3-{ID_FOTO}" type="radio" name="estrellas-{ID_FOTO}" value="3/{ID_FOTO}">
+                        <label for="radio3-{ID_FOTO}">★</label>
+                        <input id="radio2-{ID_FOTO}" type="radio" name="estrellas-{ID_FOTO}" value="2/{ID_FOTO}">
+                        <label for="radio2-{ID_FOTO}">★</label>
+                        <input id="radio1-{ID_FOTO}" type="radio" name="estrellas-{ID_FOTO}" value="1/{ID_FOTO}">
+                        <label for="radio1-{ID_FOTO}">★</label>
                     </p>
                 </form>
             </div>

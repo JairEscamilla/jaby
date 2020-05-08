@@ -13,7 +13,7 @@
     $visitas = $fieldsVisitas['visitas'];
     $visitas = $visitas + 1;
     mysqli_query($link, "UPDATE Album SET visitas = '$visitas' WHERE id_album = '$album'");
-
+    mysqli_query($link, "INSERT INTO Visitas(fecha_visita, id_album) VALUES(NOW(), '$album')");
     $result = mysqli_query($link, $query);
     $fields = mysqli_fetch_assoc($result);
 
@@ -22,6 +22,7 @@
     $template->setVariable("TEMA", $fields['tema']);
     $template->setVariable("FECHA", $fields['fecha_publicacion']);
     $template->setVariable("IMAGEN", $fields['cover']);
+    $template->setVariable("VISITAS", $visitas);
 
     if(isset($_SESSION['username'])){
         if ($_SESSION['tipo_usuario'] == 1)
