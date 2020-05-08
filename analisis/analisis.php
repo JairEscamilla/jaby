@@ -21,7 +21,22 @@
         $query = "SELECT titulo, descripcion, username, visitas, id_album, cover FROM Album WHERE tipo = 0";
     $result = mysqli_query($link, $query);
 
-    if($opcion != 4){
+    if($opcion == 5){
+        $template->addBlockfile("ALBUMES", "ALBUMES", "card_album4.html");
+        $template->setCurrentBlock("ALBUMES");
+        while ($fields = mysqli_fetch_assoc($result)) {
+            $template->setCurrentBlock("TODOS_ALBUMES");
+            $template->setVariable("TITULO2", $fields['titulo']);
+            $template->setVariable("DESCRIPCION2", $fields['descripcion']);
+            $template->setVariable("PROPIETARIO", $fields['username']);
+            $template->setVariable("CALIFICACION", $fields['prom_cal']);
+            $template->setVariable("LINK2", $fields['id_album']);
+            $template->setVariable("IMAGEN", $fields['cover']);
+            $template->parseCurrentBlock("TODOS_ALBUMES");
+        }
+    }
+
+    if($opcion != 4 && $opcion != 5){
         $template->addBlockfile("ALBUMES", "ALBUMES", "card_album2.html");
         $template->setCurrentBlock("ALBUMES");
         while($fields = mysqli_fetch_assoc($result)){
