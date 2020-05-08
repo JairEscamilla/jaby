@@ -1,5 +1,5 @@
 .image-container{
-    background-image: url('../images/subir_foto.png');
+    background-image: url('../images/notificacion.png');
     background-repeat: no-repeat;
     margin-top: 80px;
     height: 90px;
@@ -20,4 +20,8 @@
 .card-link, .card-link:hover{
     color: #007bff;
     padding: 2em;
+}
+
+.invitacion, .invitacion:hover{
+    color: #007bff !important;
 }
