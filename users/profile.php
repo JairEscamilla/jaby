@@ -53,7 +53,7 @@
             
             $template->addBlockfile("ALBUMES_USUARIOS", "ALBUMES_USUARIOS", "card_album2.html");
             $template->setCurrentBlock("ALBUMES_USUARIOS");
-            $query2 = "SELECT titulo, cover, visitas, tema, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE tipo = 0 GROUP BY id_album";
+            $query2 = "SELECT titulo, cover, visitas, tema, fecha_publicacion, descripcion, a.id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) LEFT JOIN Suscripciones sus ON sus.id_album = a.id_album WHERE tipo = 0 OR a.username = '$username' OR (a.id_album IN (SELECT id_album FROM Suscripciones WHERE username = '$username')) GROUP BY id_album";
             $result2 = mysqli_query($link, $query2);
             
             while($fields = mysqli_fetch_assoc($result2)){
