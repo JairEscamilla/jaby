@@ -24,6 +24,15 @@
         $template->setVariable("FECNAC", $fields['fecha_nacimiento']);
         $template->setVariable("IMAGEN", $fields['foto']);
 
+
+        $query = "SELECT busqueda, timestamp FROM HistorialBusquedas WHERE username = '$username'";
+        $result = mysqli_query($link, $query);
+        $busquedas = "";
+        while($fields = mysqli_fetch_assoc($result)){
+            $busquedas = $busquedas. "<tr><th>".$fields['busqueda']."</th><td>".$fields['timestamp']."</td></tr>";
+        }
+        $template->setVariable("HISTORIAL", $busquedas);
+
         if ($_SESSION['tipo_usuario'] == 1)
             $template->addBlockfile("LINKS_NAVEGACION", "NAVEGACION", "links_logged_admin.html");
         else

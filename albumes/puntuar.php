@@ -3,6 +3,11 @@
     $link = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
     $puntuacion = $_POST['puntuacion'];
     $id_foto = $_POST['id_foto'];
+    if(!isset($_SESSION['username'])){
+        echo "error";
+        return;
+    }
+    
     $username = $_SESSION['username'];
 
     $queryValidator = "SELECT username FROM Calificaciones WHERE id_foto = '$id_foto' AND username = '$username'";

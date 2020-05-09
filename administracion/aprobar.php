@@ -13,6 +13,26 @@
     $username = $fields['username'];
     $query = "INSERT INTO Notificaciones(notificacion, status, username) VALUES('Una de las fotos que subiste, ha sido aprobada', 0, '$username')";
     mysqli_query($link, $query);
+
+
+    $resultAlbumFoto = mysqli_query($link, "SELECT id_album FROM Fotos WHERE id_foto = '$id_foto'");
+    $fields = mysqli_fetch_assoc($resultAlbumFoto);
+    $album = $fields['id_album'];
+
+    $queryAlbum = "SELECT tipo FROM Album WHERE id_album = '$album'";
+    $result = mysqli_query($link, $queryAlbum);
+    $fields = mysqli_fetch_assoc($result);
+    if($fields['tipo'] == 1){
+        $queryNotificacion = "SELECT username FROM Suscripciones WHERE id_album = '$album'";
+        $resultNotificacion = mysqli_query($link, $queryNotificacion);
+        while($fields = mysqli_fetch_assoc($resultNotificacion)){
+            $usr = $fields['username'];
+            $queryInsertaNotificacion = "INSERT INTO Notificaciones(notificacion, status, username) VALUES (\"Se ha subido una nueva foto un album al que te han invitado <a class ='invitacion' href='../albumes/ver_album.php?album=" . $album . "'>Ver álbum</a>\", 0, '$usr')";
+            mysqli_query($link, $queryInsertaNotificacion);
+        }
+    }
+
+
     mysqli_close($link);
     echo $id_foto;
 

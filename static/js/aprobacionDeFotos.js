@@ -13,6 +13,8 @@ function aprobar(id_foto){
 
 
 function aprobacionExitosa(result, status){
+    console.log(result);
+    
     Swal.fire(
         'Se ha aprobado una nueva foto',
         '',

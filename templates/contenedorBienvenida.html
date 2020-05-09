@@ -13,7 +13,7 @@
                 </div>
                 
                 <div class="textoMisAlbumes">
-                    <h5>Mis álbumes</h5>
+                    <h5>Mis álbumes - ({NUMERO_ALBUMES})</h5>
                 </div>
                 
                 {ALBUMES}
@@ -30,6 +30,7 @@
 
         <div class="col-3 busqueda">
             <div class="barra-busqueda">
+                <p class="nota">*Búsqueda por fecha: AAAA1-MM1-DD1/AAAA2-MM2-DD2</p>
                 <form name= "formulario">
                     <div class="form-group">
                         <input type="text" class="form-control" id="searcher" name="searcher" placeholder="Ingresa aquí tu búsqueda" onkeyup="buscador()">
@@ -61,9 +62,6 @@
                         <a href="" onclick="return analisis(1)">Álbumes más visitados</a>
                     </div>
                     <div class="link">
-                        <a href="" onclick="return analisis(2)">Álbumes más visitados (Mes)</a>
-                    </div>
-                    <div class="link">
                         <a href="" onclick="return analisis(3)">Álbumes con más fotos</a>
                     </div>
                     <div class="link">
@@ -74,6 +72,34 @@
                     </div>
                     <div class="link">
                         <a href="" onclick="return analisis(6)">Todos los álbumes</a>
+                    </div>
+                    <div class="link visitas-fechas">
+                        <p>Más visitados en: </p>
+                    </div>
+                    <div class="link">
+                        <select id="analisis-meses" name="analisis-meses" class="custom-select" style="width: 95%;">
+                            <option selected>Más visitados en un mes en específico</option>
+                            <option value="1">Enero</option>
+                            <option value="2">Febrero</option>
+                            <option value="3">Marzo</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Mayo</option>
+                            <option value="6">Junio</option>
+                            <option value="7">Julio</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                    </div>
+                    <div class="link">
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="anio">Año</label>
+                                <input type="number" class="form-control" id="anio" placeholder="Año de más visitados" value="2020" style="width: 95%">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

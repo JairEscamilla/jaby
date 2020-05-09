@@ -1,10 +1,13 @@
 $(document).ready(function(){
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var album = url.searchParams.get("album");
     $.ajax({ // Peticion AJAX para la validacion
         url: 'mostrar_estrellas.php',
         dataType: 'html',
         type: 'POST',
         async: true,
-        data: {},
+        data: {album: album},
         success: mostrarEstrellas,
         error: errorFunction
     });
@@ -29,6 +32,9 @@ $(':radio').change(function () {
 
 function successResponse(data, status){
     console.log(data);   
+    if(data == "error"){
+        Swal.fire('Debes iniciar sesión para calificar');
+    }
 }
 
 function errorFunction(error, status){

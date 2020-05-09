@@ -10,7 +10,7 @@
     if (!move_uploaded_file($_FILES['file']['tmp_name'], $filename)) { // Movemos las imagenes
         echo "Algo falló):";
     }
-
+    
     $query = "INSERT INTO Fotos(direccion_foto, status, id_album) VALUES ('$filename', 0, '$album')";
     if(mysqli_query($link, $query)){
         header('location: mensaje_exito_subir_foto.html');

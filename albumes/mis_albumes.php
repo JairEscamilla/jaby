@@ -17,9 +17,17 @@
     $template->parseCurrentBlock("NAVEGACION");
 
     $username = $_SESSION['username'];
+    if($_SESSION['tipo_usuario'] == 1 AND isset($_GET['username'])){
+        $queryPublicos = "SELECT id_album, titulo, descripcion, fecha_publicacion, tema, cover, username FROM Album WHERE username = '".$_GET['username']."' AND tipo = 0";
+        $queryPrivados = "SELECT id_album, titulo, descripcion, fecha_publicacion, tema, cover, username FROM Album WHERE username = '".$_GET['username']."' AND tipo = 1";
+    }else{
+        $queryPublicos = "SELECT id_album, titulo, descripcion, fecha_publicacion, tema, cover, username FROM Album WHERE username = '$username' AND tipo = 0";
+        $queryPrivados = "SELECT id_album, titulo, descripcion, fecha_publicacion, tema, cover, username FROM Album WHERE username = '$username' AND tipo = 1";
+    }
+
+    
     $link = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
 
-    $queryPublicos = "SELECT id_album, titulo, descripcion, fecha_publicacion, tema, cover FROM Album WHERE username = '$username' AND tipo = 0";
     $template->addBlockfile("PUBLICOS", "PUBLICOS", "album_publico.html");
     $template->setCurrentBlock("PUBLICOS");
     $result = mysqli_query($link, $queryPublicos);
@@ -37,7 +45,6 @@
 
     $template->addBlockfile("PRIVADOS", "PRIVADOS", "album_privado.html");
     $template->setCurrentBlock("PRIVADOS");
-    $queryPrivados = "SELECT id_album, titulo, descripcion, fecha_publicacion, tema, cover FROM Album WHERE username = '$username' AND tipo = 1";
     $result = mysqli_query($link, $queryPrivados);
     while($fields = mysqli_fetch_assoc($result)){
         $template->setCurrentBlock("ALBUMPRIVADO");
@@ -47,6 +54,11 @@
         $template->setVariable("LINK", $fields['id_album']);
         $template->setVariable("FECHA", $fields['fecha_publicacion']);
         $template->setVariable("TEMA", $fields['tema']);
+        if($_SESSION['username'] == $fields['username'])
+            $template->setVariable("INVITACION", "<a href='#' id='invitacion' onclick='return invitar_usuario(".$fields['id_album'].")' >Invita a un usuario</a>");
+        else 
+            $template->setVariable("INVITACION", "");
+
         $template->parseCurrentBlock("ALBUMPRIVADO");
     }
     $template->parseCurrentBlock("PRIVADOS");

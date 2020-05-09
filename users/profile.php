@@ -10,6 +10,7 @@
         // Establecemos conexion a la base de datos
         $link = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
         $username = $_SESSION['username'];
+       
         $query = "SELECT foto, nombre, ap_paterno, ap_materno FROM Usuario WHERE username = '$username'";
 
         $result = mysqli_query($link, $query);
@@ -25,10 +26,14 @@
         $template->setVariable("NOMBRE", $query_result['nombre']);
         $template->setVariable("AP_PAT", $query_result['ap_paterno']);
         $template->setVariable("AP_MAT", $query_result['ap_materno']);
+        $result = mysqli_query($link, "SELECT COUNT(id_album) cuenta FROM Album WHERE username = '$username'");
+        $fields = mysqli_fetch_assoc($result);
+        $template->setVariable("NUMERO_ALBUMES", $fields['cuenta']);
 
-            $template->addBlockfile("ALBUMES", "ALBUMES", "card_album.html");
+            // SELECT titulo, descripcion, id_album, COUNT(id_foto) FROM Album LEFT JOIN Fotos USING(id_album) WHERE username = 'jair1' GROUP BY id_album;
+            $template->addBlockfile("ALBUMES", "ALBUMES", "card_album_fotos.html");
             $template->setCurrentBlock("ALBUMES");
-            $query = "SELECT titulo, descripcion, id_album FROM Album WHERE username = '$username'";
+            $query = "SELECT titulo, descripcion, id_album, COUNT(id_foto) cuenta, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE a.username = '$username' GROUP BY id_album ORDER BY calif DESC";
             $result = mysqli_query($link, $query);
 
             while($line = mysqli_fetch_assoc($result)){
@@ -36,6 +41,11 @@
                 $template->setVariable("TITULO", $line['titulo']);
                 $template->setVariable("DESCRIPCION", $line['descripcion']);
                 $template->setVariable("LINK", $line['id_album']);
+                $template->setVariable("FOTOS", $line['cuenta']);
+                if($line['calif'] != NULL)
+                    $template->setVariable("CALIFICACION", $line['calif']);
+                else 
+                    $template->setVariable("CALIFICACION", "0");
                 $template->parseCurrentBlock("ALBUM");
             }
             $template->parseCurrentBlock("ALBUMES");
@@ -43,17 +53,22 @@
             
             $template->addBlockfile("ALBUMES_USUARIOS", "ALBUMES_USUARIOS", "card_album2.html");
             $template->setCurrentBlock("ALBUMES_USUARIOS");
-            $query2 = "SELECT titulo, descripcion, id_album, visitas, username, cover FROM Album WHERE tipo = 0";
+            $query2 = "SELECT titulo, cover, visitas, tema, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE tipo = 0 GROUP BY id_album";
             $result2 = mysqli_query($link, $query2);
             
             while($fields = mysqli_fetch_assoc($result2)){
                 $template->setCurrentBlock("TODOS_ALBUMES");
                 $template->setVariable("TITULO2", $fields['titulo']);
-                $template->setVariable("DESCRIPCION2", $fields['descripcion']);
+                $template->setVariable("DESCRIPCION2", $fields['tema']);
                 $template->setVariable("PROPIETARIO", $fields['username']);
                 $template->setVariable("VISITAS", $fields['visitas']);
                 $template->setVariable("LINK2", $fields['id_album']);
                 $template->setVariable("IMAGEN", $fields['cover']);
+                $template->setVariable("PUBLICACION", $fields['fecha_publicacion']);
+                if ($fields['calif'] != NULL)
+                    $template->setVariable("CALIFICACION", $fields['calif']);
+                else
+                    $template->setVariable("CALIFICACION", "0");
                 $template->parseCurrentBlock("TODOS_ALBUMES");
             }
 

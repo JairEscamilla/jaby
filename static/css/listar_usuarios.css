@@ -1,15 +1,12 @@
-html{
+html, body{
     overflow-x: hidden;
 }
-
-/* Hoja de estilos para el registro de usuarios */
-.image-container{
-    background-image: url('../images/perfil.png');
-    background-repeat: no-repeat;
-    margin-top: 80px;
-    height: 90px;
-    width: 350px;
+.contenido{
+    height: 100vh;
+    margin-top: 2em;
+    width: 100vw;
 }
+
 
 .picture{
     width: 100%;
@@ -51,7 +48,7 @@ html{
     width: 100vw;
     display: flex;
     justify-content: center;
-    margin-top: -50px;
+    margin-top: 30px;
 }
 
 .card-body{
@@ -70,7 +67,6 @@ html{
 }
 
 #histBusq{
-    width: 100%;
     display: flex;
     justify-content: center;
     font-weight: bold;
@@ -139,4 +135,28 @@ html{
     display: flex;
     justify-content: center;
     margin-top: 1em;
+}
+
+.contenido-tabla{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.table-container{
+    width: 80%;
+}
+
+.contenedor-imagenes{
+    margin-top: 0;
+}
+
+.imagen-comentada{
+    width: 60vw;
+    height: 60vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 2em;
 }

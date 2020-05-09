@@ -5,7 +5,13 @@
     if(isset($_SESSION['username'])){
         $link = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
         $username = $_SESSION['username'];
-        $query = "SELECT * FROM Usuario WHERE username = '$username'";
+        if($_SESSION['tipo_usuario'] == 1 AND isset($_GET['username'])){
+            $query = "SELECT * FROM Usuario WHERE username = '".$_GET['username']."'";
+            $archivo = "actualizar2.php?username=".$_GET['username'];
+        }else{
+            $archivo = "actualizar.php";
+            $query = "SELECT * FROM Usuario WHERE username = '$username'";
+        }
 
         $result = mysqli_query($link, $query);
         $fields = mysqli_fetch_assoc($result);
@@ -22,6 +28,7 @@
         $template->setVariable("AP_MAT", $fields['ap_materno']);
         $template->setVariable("ESCOLARIDAD", $fields['escolaridad']);
         $template->setVariable("DIRECCION", $fields['direccion']);
+        $template->setVariable("ACCION", $archivo);
         if ($_SESSION['tipo_usuario'] == 1)
             $template->addBlockfile("LINKS_NAVEGACION", "NAVEGACION", "links_logged_admin.html");
         else

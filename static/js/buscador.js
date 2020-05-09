@@ -1,6 +1,21 @@
 function buscador(){
     var busqueda = document.formulario.searcher.value;
     var filtroBusqueda = document.formulario.options.value;
+    if (filtroBusqueda == "fecha" || filtroBusqueda == "todos"){
+        var separarFechas = busqueda.split("/");
+        var date1 = separarFechas[0];
+        var date2 = separarFechas[1];
+        $.ajax({ // Peticion AJAX para la validacion
+            url: 'buscador.php',
+            dataType: 'html',
+            type: 'POST',
+            async: true,
+            data: { busqueda: busqueda, filtroBusqueda: filtroBusqueda, date1: date1, date2: date2 },
+            success: successResponse,
+            error: errorFunction
+        });
+        return;
+    }
     $.ajax({ // Peticion AJAX para la validacion
         url: 'buscador.php',
         dataType: 'html',
@@ -15,7 +30,8 @@ function buscador(){
 
 function successResponse(response, status){
     $(".busquedas").html("");
-
+    console.log(response);
+    
     if(response.length == 0)
         $("#albumesTitle").html("No hemos encontrado un resultado para tú búsqueda):");
     else

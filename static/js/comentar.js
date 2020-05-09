@@ -10,7 +10,7 @@ function comentar(id_foto){
         async: true,
         data: { id_foto: id_foto, comentario: comentario },
         success: function(data, status){
-            successResponse(data, status, this.foto);
+            successResponse2(data, status, this.foto);
         },
         error: errorFunction
     });
@@ -18,10 +18,11 @@ function comentar(id_foto){
     return false;
 }
 
-function successResponse(response, status, foto){
+function successResponse2(response, status, foto){
     $("#"+foto+"-container").append(response);
 }
 
 function errorFunction(error, status) {
     console.log(error);
 }
+

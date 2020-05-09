@@ -5,8 +5,9 @@
         echo "No has iniciado sesión";
         return;
     }
+    $album = $_POST['album'];
     $username = $_SESSION['username'];
-    $query = "SELECT calificacion, id_foto FROM Calificaciones WHERE username = '$username'";
+    $query = "SELECT calificacion, id_foto FROM Calificaciones WHERE id_foto IN (SELECT id_foto FROM Fotos WHERE id_album = '$album') AND username = '$username'";
     
     $result = mysqli_query($link, $query);
 

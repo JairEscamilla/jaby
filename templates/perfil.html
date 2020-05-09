@@ -74,7 +74,9 @@
                         <div class="info">
                             <div class="bold">Fecha de nacimiento: </div> {FECNAC}
                         </div>
-                        <a href="#" id="histBusq" class="btn btn-success">Historial de búsquedas</a>
+                        <button type="button" class="btn btn-success" id="histBusq" data-toggle="modal" data-target="#exampleModalLong">
+                            Historial de búsquedas
+                        </button>
                         <div class="editar">
                             <p>¿Tus datos son incorrectos? <a href="../users/editar.php" id="editar"> Editalos</a></p>
                         </div>
@@ -85,6 +87,37 @@
     </div>
 
     
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Historial de Búsquedas</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Búsqueda</th>
+                                <th scope="col">Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {HISTORIAL}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 

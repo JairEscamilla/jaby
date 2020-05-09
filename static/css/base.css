@@ -81,7 +81,7 @@ html, body{
 .form-group{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .barra-busqueda{
@@ -145,8 +145,24 @@ html, body{
     display: flex;
     justify-content: flex-start;
     padding: 0.3em;
+    font-size: small;
 }
 
 #analisis{
     color: black;
+}
+
+.info-album{
+    display: block;
+    margin-top: 10px;
+}
+
+.nota{
+    font-size: x-small;
+}
+
+.visitas-fechas{
+    padding: 0;
+    margin-bottom: -15px;
+    margin-top: 5px;
 }

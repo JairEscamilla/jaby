@@ -8,45 +8,40 @@
 
 
     if($opcion == 1)
-        $query = "SELECT titulo, descripcion, username, visitas, id_album, cover FROM Album WHERE tipo = 0 ORDER BY visitas DESC LIMIT 10";
-    if($opcion == 2)
-        $query = "SELECT titulo, descripcion, username, visitas, id_album, cover FROM Album LEFT JOIN Visitas USING(id_album)  WHERE MONTH(fecha_visita) = MONTH(NOW()) AND tipo = 0 GROUP BY id_album ORDER BY visitas DESC";
+        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE tipo = 0 GROUP BY id_album ORDER BY visitas DESC";
     if($opcion == 3)
-        $query = "SELECT titulo, descripcion, username, visitas, id_album, cover FROM Album a LEFT JOIN Fotos USING(id_album) WHERE tipo = 0 GROUP BY a.id_album ORDER BY COUNT(id_foto) DESC LIMIT 10";
+        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE tipo = 0 GROUP BY id_album ORDER BY cuenta DESC";
     if($opcion == 4)
         $query = "SELECT id_album, direccion_foto, COUNT(id_comentario) comentarios FROM Fotos LEFT JOIN Comentarios USING(id_foto) LEFT JOIN Album USING(id_album) WHERE tipo = 0 GROUP BY id_foto ORDER BY COUNT(id_comentario) DESC LIMIT 10";
     if($opcion == 5)
-        $query = "SELECT titulo, descripcion, al.username, visitas, id_album, cover, AVG(calificacion) prom_cal FROM Album al LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE tipo = 0 GROUP BY id_album ORDER BY prom_cal DESC LIMIT 10";
+        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE tipo = 0 GROUP BY id_album ORDER BY calif DESC";
     if($opcion == 6)
-        $query = "SELECT titulo, descripcion, username, visitas, id_album, cover FROM Album WHERE tipo = 0";
+        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE tipo = 0 GROUP BY id_album";
+    if($opcion == 7){
+        $mes = $_POST['mes'];
+        $anio = $_POST['anio'];
+        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) LEFT JOIN Visitas USING(id_album) WHERE MONTH(fecha_visita) = '$mes' AND YEAR(fecha_visita) = '$anio' AND tipo = 0 GROUP BY id_album ORDER BY COUNT(Visitas.id) DESC";
+    }
+
     $result = mysqli_query($link, $query);
 
-    if($opcion == 5){
-        $template->addBlockfile("ALBUMES", "ALBUMES", "card_album4.html");
+
+    if($opcion != 4){
+        $template->addBlockfile("ALBUMES", "ALBUMES", "card_album2.html");
         $template->setCurrentBlock("ALBUMES");
         while ($fields = mysqli_fetch_assoc($result)) {
             $template->setCurrentBlock("TODOS_ALBUMES");
             $template->setVariable("TITULO2", $fields['titulo']);
-            $template->setVariable("DESCRIPCION2", $fields['descripcion']);
-            $template->setVariable("PROPIETARIO", $fields['username']);
-            $template->setVariable("CALIFICACION", $fields['prom_cal']);
-            $template->setVariable("LINK2", $fields['id_album']);
-            $template->setVariable("IMAGEN", $fields['cover']);
-            $template->parseCurrentBlock("TODOS_ALBUMES");
-        }
-    }
-
-    if($opcion != 4 && $opcion != 5){
-        $template->addBlockfile("ALBUMES", "ALBUMES", "card_album2.html");
-        $template->setCurrentBlock("ALBUMES");
-        while($fields = mysqli_fetch_assoc($result)){
-            $template->setCurrentBlock("TODOS_ALBUMES");
-            $template->setVariable("TITULO2", $fields['titulo']);
-            $template->setVariable("DESCRIPCION2", $fields['descripcion']);
+            $template->setVariable("DESCRIPCION2", $fields['tema']);
             $template->setVariable("PROPIETARIO", $fields['username']);
             $template->setVariable("VISITAS", $fields['visitas']);
             $template->setVariable("LINK2", $fields['id_album']);
             $template->setVariable("IMAGEN", $fields['cover']);
+            $template->setVariable("PUBLICACION", $fields['fecha_publicacion']);
+            if ($fields['calif'] != NULL)
+                $template->setVariable("CALIFICACION", $fields['calif']);
+            else
+                $template->setVariable("CALIFICACION", "0");
             $template->parseCurrentBlock("TODOS_ALBUMES");
         }
     }else{
