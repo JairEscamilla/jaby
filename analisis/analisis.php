@@ -5,7 +5,7 @@
     $template->loadTemplatefile("resultado_busqueda.html", true, true);
     $link = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
     $opcion = $_POST['opcion'];
-
+    $username = $_SESSION['username'];
 
     if($opcion == 1)
         $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE tipo = 0 GROUP BY id_album ORDER BY visitas DESC";
@@ -16,7 +16,7 @@
     if($opcion == 5)
         $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE tipo = 0 GROUP BY id_album ORDER BY calif DESC";
     if($opcion == 6)
-        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE tipo = 0 GROUP BY id_album";
+        $query = "SELECT titulo, cover, visitas, tema, fecha_publicacion, descripcion, a.id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) LEFT JOIN Suscripciones sus ON sus.id_album = a.id_album WHERE tipo = 0 OR a.username = '$username' OR (a.id_album IN (SELECT id_album FROM Suscripciones WHERE username = '$username')) GROUP BY id_album";
     if($opcion == 7){
         $mes = $_POST['mes'];
         $anio = $_POST['anio'];
@@ -24,8 +24,7 @@
     }
 
     $result = mysqli_query($link, $query);
-
-
+    
     if($opcion != 4){
         $template->addBlockfile("ALBUMES", "ALBUMES", "card_album2.html");
         $template->setCurrentBlock("ALBUMES");

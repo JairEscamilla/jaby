@@ -8,20 +8,25 @@
     $filtroBusqueda = $_POST['filtroBusqueda'];
     $username = $_SESSION['username'];
     if($filtroBusqueda == "nombre")
-        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE a.username LIKE '%" . $busqueda . "%'  AND tipo = 0 GROUP BY id_album";
+        //$query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE a.username LIKE '%" . $busqueda . "%'  AND tipo = 0 GROUP BY id_album";
+        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, a.id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) LEFT JOIN Suscripciones sus ON sus.id_album = a.id_album WHERE a.username LIKE '%".$busqueda."%' AND (tipo = 0 OR a.username = '$username' OR a.id_album IN (SELECT id_album FROM Suscripciones WHERE username = '$username') ) GROUP BY id_album";
     if($filtroBusqueda == "tema")
-        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE tema LIKE '%" . $busqueda . "%'  AND tipo = 0 GROUP BY id_album";
+        //$query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE tema LIKE '%" . $busqueda . "%'  AND tipo = 0 GROUP BY id_album";
+        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, a.id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) LEFT JOIN Suscripciones sus ON sus.id_album = a.id_album WHERE tema LIKE '%".$busqueda."%' AND (tipo = 0 OR a.username = '$username' OR a.id_album IN (SELECT id_album FROM Suscripciones WHERE username = '$username') ) GROUP BY id_album";
+        
     if($filtroBusqueda == "titulo")
-        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE titulo LIKE '%" . $busqueda . "%'  AND tipo = 0 GROUP BY id_album";
+        //$query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE titulo LIKE '%" . $busqueda . "%'  AND tipo = 0 GROUP BY id_album";
+        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, a.id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) LEFT JOIN Suscripciones sus ON sus.id_album = a.id_album WHERE titulo LIKE '%".$busqueda."%' AND (tipo = 0 OR a.username = '$username' OR a.id_album IN (SELECT id_album FROM Suscripciones WHERE username = '$username') ) GROUP BY id_album";
     if($filtroBusqueda == "fecha"){
         $date1 = $_POST['date1'];
         $date2 = $_POST['date2'];
-        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE fecha_publicacion >= '$date1' AND fecha_publicacion <= '$date2'  AND tipo = 0 GROUP BY id_album";
+        //$query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE fecha_publicacion >= '$date1' AND fecha_publicacion <= '$date2'  AND tipo = 0 GROUP BY id_album";
+        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, a.id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) LEFT JOIN Suscripciones sus ON sus.id_album = a.id_album WHERE fecha_publicacion >= '".$date1."' AND fecha_publicacion <= '".$date2."' AND (tipo = 0 OR a.username = '$username' OR a.id_album IN (SELECT id_album FROM Suscripciones WHERE username = '$username')) GROUP BY id_album";
     }
     if($filtroBusqueda == "todos"){
         $date1 = $_POST['date1'];
         $date2 = $_POST['date2'];
-        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE (a.username LIKE '%" . $busqueda . "%' OR tema LIKE '%" . $busqueda . "%' OR titulo LIKE '%".$busqueda."%') AND tipo = 0 GROUP BY id_album";
+        $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE (a.username LIKE '%" . $busqueda . "%' OR tema LIKE '%" . $busqueda . "%' OR titulo LIKE '%".$busqueda."%') AND (tipo = 0 OR a.username = '$username' OR a.id_album IN (SELECT id_album FROM Suscripciones WHERE username = '$username')) GROUP BY id_album";
     }
     
    
