@@ -5,8 +5,25 @@
     $template->loadTemplatefile("ver_album.html", true, true);
     $album = $_GET['album'];
     $link = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
-    $query = "SELECT titulo, username, tema, fecha_publicacion, cover FROM Album WHERE id_album = '$album'";
+    
+    $query = "SELECT username FROM Album WHERE id_album = '$album'";
+    $res = mysqli_query($link, $query);
+    $fields = mysqli_fetch_assoc($res);
+    if($fields['username'] != $_SESSION['username']){
+        mysqli_query($link, "CALL valida_entrada_album(@entrada, '".$_SESSION['username']."', '$album')");
+        $resultado = mysqli_query($link, "SELECT @entrada AS entrada");
+        $fields = mysqli_fetch_assoc($resultado);
+        if($fields['entrada'] == 1){
+            header('location: error_message.html');
+            return;
+        }
+    }
 
+   
+    
+
+
+    $query = "SELECT titulo, username, tema, fecha_publicacion, cover FROM Album WHERE id_album = '$album'";
     $queryVisitas = "SELECT visitas FROM Album WHERE id_album = '$album'";
     $resultVisitas = mysqli_query($link, $queryVisitas);
     $fieldsVisitas = mysqli_fetch_assoc($resultVisitas);
