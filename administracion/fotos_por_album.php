@@ -1,4 +1,10 @@
 <?php
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    fotos_por_album.php
+ * @brief:  Este archivo se encarga desplegar en una tabla la cantidad de fotos por album de cada usuario
+ */
     include '../cfg_server.php';
     require_once "HTML/Template/ITX.php";
     $template = new HTML_TEMPLATE_ITX('../templates/administracion');
@@ -8,6 +14,8 @@
         echo "Acceso denegado";
         return;
     }
+
+    // Obtenemos la cantidad de fotos por album según un usuario en particular y los deplegamos en un template
     $username = $_GET['username'];
     $template->setVariable("USERNAME", $username);
     $query = "SELECT id_album, titulo, COUNT(id_foto) cuenta FROM Album LEFT JOIN Fotos USING(id_album) WHERE username = '$username' GROUP BY id_album";

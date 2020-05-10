@@ -1,4 +1,10 @@
 <?php
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    ver_album.php
+ * @brief:  Este archivo se encarga de mostrar las fotos y comentarios de cada album
+ */
     include '../cfg_server.php';
     require_once "HTML/Template/ITX.php";
     $template = new HTML_TEMPLATE_ITX('../templates/albumes');
@@ -6,6 +12,7 @@
     $album = $_GET['album'];
     $link = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
     
+    // Validamos que el usuario tenga acceso al album
     $query = "SELECT username FROM Album WHERE id_album = '$album'";
     $res = mysqli_query($link, $query);
     $fields = mysqli_fetch_assoc($res);
@@ -22,7 +29,7 @@
    
     
 
-
+    // Seleccionamos las fotos y comentarios de los albumes
     $query = "SELECT titulo, username, tema, fecha_publicacion, cover FROM Album WHERE id_album = '$album'";
     $queryVisitas = "SELECT visitas FROM Album WHERE id_album = '$album'";
     $resultVisitas = mysqli_query($link, $queryVisitas);
@@ -79,7 +86,7 @@
     mysqli_close($link);
     $template->show();
     
-
+    //  Creamos una cadena con los comentarios hechos de cada foto
     function crearCadena($imagen, $usuario, $comentario){
         $base = "
             <div class='card comment tarjeta'>

@@ -1,4 +1,10 @@
 <?php
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    infoPerfil.php
+ * @brief:  Este archivo se encarga de mostrar la informacion de perfil del usuario loggeado
+ */
     include '../cfg_server.php';
     require_once "HTML/Template/ITX.php";
     $template = new HTML_TEMPLATE_ITX('../templates');
@@ -25,13 +31,15 @@
         $template->setVariable("IMAGEN", $fields['foto']);
 
 
-        $query = "SELECT busqueda, timestamp FROM HistorialBusquedas WHERE username = '$username'";
+        $query = "SELECT busqueda, timestamp FROM HistorialBusquedas WHERE username = '$username'"; // Mostramos el historial de busquedas
         $result = mysqli_query($link, $query);
         $busquedas = "";
         while($fields = mysqli_fetch_assoc($result)){
             $busquedas = $busquedas. "<tr><th>".$fields['busqueda']."</th><td>".$fields['timestamp']."</td></tr>";
         }
         $template->setVariable("HISTORIAL", $busquedas);
+
+        // Mostramos la barra de navegacion segun el tipo de usuario loggeado
 
         if ($_SESSION['tipo_usuario'] == 1)
             $template->addBlockfile("LINKS_NAVEGACION", "NAVEGACION", "links_logged_admin.html");

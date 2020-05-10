@@ -1,4 +1,10 @@
 <?php
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    editar.php
+ * @brief:  Este archivo se encarga de mostrar la plantilla para editar la informacion del usuario
+ */
     include '../cfg_server.php';
     require_once "HTML/Template/ITX.php";
     $template = new HTML_TEMPLATE_ITX('../templates');

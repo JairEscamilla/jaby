@@ -1,4 +1,10 @@
 <?php
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    profile.php
+ * @brief:  Este archivo se encarga de mostrar el inicio de cada usuario
+ */
     include '../cfg_server.php';
     require_once "HTML/Template/ITX.php";
     $template = new HTML_TEMPLATE_ITX('../templates'); // Cargamos los templates

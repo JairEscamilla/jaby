@@ -2,7 +2,7 @@ $(document).ready(function(){
     var url_string = window.location.href;
     var url = new URL(url_string);
     var album = url.searchParams.get("album");
-    $.ajax({ // Peticion AJAX para la validacion
+    $.ajax({ // Peticion AJAX para la validacion de mostrar las estrellas
         url: 'mostrar_estrellas.php',
         dataType: 'html',
         type: 'POST',
@@ -18,7 +18,7 @@ $(':radio').change(function () {
     var puntuacion = separar[0];
     var id_foto = separar[1];
     
-    $.ajax({ // Peticion AJAX para la validacion
+    $.ajax({ // Peticion AJAX para las calificaciones de los usuarios
         url: 'puntuar.php',
         dataType: 'html',
         type: 'POST',

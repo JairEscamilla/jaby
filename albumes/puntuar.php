@@ -1,4 +1,10 @@
 <?php
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    comentar.php
+ * @brief:  Este archivo se encarga de hacer las calificaciones de las fotos por un usuario en particular
+ */
     include '../cfg_server.php';
     $link = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
     $puntuacion = $_POST['puntuacion'];
@@ -9,7 +15,7 @@
     }
     
     $username = $_SESSION['username'];
-
+    // En caso de tener una calificacion la foto por parte de un mismo usuario, solo se actualiza la calificacion, en caso contrario, insertamos una nueva calificacion
     $queryValidator = "SELECT username FROM Calificaciones WHERE id_foto = '$id_foto' AND username = '$username'";
     $result = mysqli_query($link, $queryValidator);
     if(mysqli_num_rows($result) > 0)

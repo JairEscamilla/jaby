@@ -1,6 +1,6 @@
 function verNotificacion(id_notificacion){
     
-    $.ajax({ // Peticion AJAX para la validacion
+    $.ajax({ // Peticion AJAX para ver las notificaciones
         url: 'ver_notificacion.php',
         dataType: 'html',
         type: 'POST',

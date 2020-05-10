@@ -14,7 +14,7 @@ function aprobar(id_foto){
 
 function aprobacionExitosa(result, status){
     console.log(result);
-    
+    // Mostramos mensaje de exito y desaparecemos con un slideup el elemento que coincida con el id
     Swal.fire(
         'Se ha aprobado una nueva foto',
         '',

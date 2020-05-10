@@ -1,4 +1,10 @@
 <?php
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    comentar.php
+ * @brief:  Este archivo se encarga de actualizar los datos de un usuario por parte de un admministrador
+ */
      include '../cfg_server.php';
     $con = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
     if(!($con)){ // Si ocurrió un error en la conexion, imprimos que ha ocurrido un error
@@ -43,3 +49,4 @@
     }
 
     mysqli_close($con); // CERRAMOS LA CONEXION
+?>

@@ -1,4 +1,10 @@
 <?php
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    listar_usuarios.php
+ * @brief:  Este archivo se encarga de mostrar todos los usuarios registrados en el sistema
+ */
     include '../cfg_server.php';
     require_once "HTML/Template/ITX.php";
     $template = new HTML_TEMPLATE_ITX('../templates/administracion');
@@ -9,6 +15,8 @@
         return;
     }
 
+
+    // Para cada usuario registrado desplegamos su informacion en un card que cargamos en el template
     $query = "SELECT username, password, tipo_usuario, foto, direccion, escolaridad, mail, nombre, ap_paterno, ap_materno, fecha_nacimiento, COUNT(id_album) cuenta FROM Usuario LEFT JOIN Album USING(username) GROUP BY Usuario.username;";
     $result = mysqli_query($link, $query);
 

@@ -13,7 +13,7 @@ function buscar(){
 }
 
 function successResponse(data, status){
-    $(".usuarios-container").html("");
+    $(".usuarios-container").html("");// Limpiamos y sustituimos el html del elemento
     $(".usuarios-container").html(data);
 }
 

@@ -1,10 +1,16 @@
 <?php
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    comentar.php
+ * @brief:  Este archivo se encarga de insertar comentarios en las fotos de cada album
+ */
     include '../cfg_server.php';
     require_once "HTML/Template/ITX.php";
     $link = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
     $id_foto = $_POST['id_foto'];
     $comentario = $_POST['comentario'];
-    if(!isset($_SESSION['username'])){
+    if(!isset($_SESSION['username'])){ // No se puede insertar un comentario si es que no se ha iniciado sesióm
         echo "Tiene que loggearse un usuario";
         return;
     }
@@ -12,6 +18,7 @@
     
     $query = "INSERT INTO Comentarios(username, comentario, id_foto) VALUES('$username', '$comentario', '$id_foto')";
 
+    // Insertamos y desplegamos el comentario en la base de datos
     if(!mysqli_query($link, $query)){
         echo "Ha ocurrido un error a la hora de ejecutar el query";
         return;

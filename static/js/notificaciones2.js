@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $.ajax({ // Peticion AJAX para la validacion
+    $.ajax({ // Peticion AJAX para obtener las notificaciones de los usuarios
         url: 'users/notificaciones.php',
         dataType: 'html',
         type: 'POST',

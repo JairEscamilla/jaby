@@ -1,8 +1,14 @@
 <?php
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    notificaciones.php
+ * @brief:  Este archivo se encarga de mostrar las notificaciones para cada usuarios
+ */
     include '../cfg_server.php';
     require_once "HTML/Template/ITX.php";
     $template = new HTML_TEMPLATE_ITX('../templates/');
-    if(!isset($_SESSION['username'])){
+    if(!isset($_SESSION['username'])){ // No se pueden ver las notificaciones si no has iniciado sesion
         echo "Usuario no loggeado";
         return;
     }
@@ -11,7 +17,7 @@
     $username = $_SESSION['username'];
     $query = "SELECT id_notificacion, notificacion FROM Notificaciones WHERE username = '$username' AND status = 0";
     $result = mysqli_query($link, $query);
-
+    // Desplegamos las notificaciones en un template
     $template->addBlockfile("NOTIFICACIONES", "NOTIFICACIONES", "card_notificaciones.html");
     $template->setCurrentBlock("NOTIFICACIONES");
 
@@ -24,7 +30,7 @@
     }
 
     $template->parseCurrentBlock("NOTIFICACIONES");
-
+    // Desplegamos la barra de navegacion
     if($_SESSION['tipo_usuario'] == 1)
         $template->addBlockfile("LINKS_NAVEGACION", "NAVEGACION", "links_logged_admin.html");
     else

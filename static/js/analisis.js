@@ -15,7 +15,7 @@ function analisis(opcion){
 function successResponse(data, status){
     console.log(data);
     
-    $(".busquedas").html(data);
+    $(".busquedas").html(data); // Cambiamos el html del elemento con clase busquedas
 }
 
 function errorFunction(error, status){
@@ -32,6 +32,7 @@ $("#anio").change(function(){
 });
 
 function peticion_mes_anio(){
+    // Obtenemos los valores de mes y anio 
     var mes = $("#analisis-meses").val();
     var anio = $("#anio").val();
 

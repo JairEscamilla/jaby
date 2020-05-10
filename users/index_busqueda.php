@@ -1,10 +1,16 @@
 <?php
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    comentar.php
+ * @brief:  Este archivo se encarga de hacer busquedas en el index de la pagina
+ */
     include '../cfg_server.php';
     require_once "HTML/Template/ITX.php";
     $template = new HTML_TEMPLATE_ITX('../templates'); // Cargamos los templates
     $template->loadTemplatefile("invitados.html", true, true);
     $link = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
-
+    // Ejecutamos un query diferente segun el filtro de busqueda
     if(isset($_GET['searcher']) && isset($_GET['options'])){
         $busqueda = $_GET['searcher'];
         $filtroBusqueda = $_GET['options'];

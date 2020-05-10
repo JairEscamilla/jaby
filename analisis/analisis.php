@@ -1,4 +1,10 @@
 <?php 
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    anallisis.php
+ * @brief:  Este archivo se encarga del modulo de analisis 
+ */
     include '../cfg_server.php';
     require_once "HTML/Template/ITX.php";
     $template = new HTML_TEMPLATE_ITX('../templates'); // Cargamos los templates
@@ -7,6 +13,8 @@
     $opcion = $_POST['opcion'];
     $username = $_SESSION['username'];
 
+
+    // Según cada una de las opciones del modulo de analisis, vamos a ejecutar un nuevo query
     if($opcion == 1)
         $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE tipo = 0 GROUP BY id_album ORDER BY visitas DESC";
     if($opcion == 3)
@@ -25,7 +33,7 @@
 
     $result = mysqli_query($link, $query);
     
-    if($opcion != 4){
+    if($opcion != 4){ // Si la opcion de analisis es cuatro, desplegamos un card distinto al de las demas opciones
         $template->addBlockfile("ALBUMES", "ALBUMES", "card_album2.html");
         $template->setCurrentBlock("ALBUMES");
         while ($fields = mysqli_fetch_assoc($result)) {

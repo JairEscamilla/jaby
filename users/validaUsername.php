@@ -1,4 +1,10 @@
 <?php
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    validaUsername.php
+ * @brief:  Este archivo se encarga de validar la disponibilidad de un username
+ */
     include '../cfg_server.php';
     require_once 'HTML/Template/ITX.php';
 

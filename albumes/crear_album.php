@@ -1,10 +1,16 @@
 <?php
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    crear_album.php
+ * @brief:  Este archivo se encarga de insertar un album en la base de datos
+ */
     include '../cfg_server.php';
     require_once "HTML/Template/ITX.php";
     $template = new HTML_TEMPLATE_ITX('../templates/albumes');
     
     if(!isset($_SESSION['username'])){
-        echo "Error"; // Despues vamos a redireccionar a la página de error
+        echo "Error"; // No se puede insertar un album si es no has iniciado sesion
         return;
     }
     
@@ -22,7 +28,7 @@
         }
 
         $con = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
-
+        // Recogemos todos los parametros
         $nombre = $_POST['nombre'];
         $tema = $_POST['tema'];
         $descripcion = $_POST['descripcion'];
@@ -33,7 +39,7 @@
         $query = "INSERT INTO Album(titulo, tema, descripcion, visitas, tipo, fecha_publicacion, cover, username) VALUES ('$nombre', '$tema', '$descripcion', 0, '$tipo', NOW(), '$filename', '$username')";
 
         if(mysqli_query($con, $query)){
-            header('location: mensaje_exito.html');
+            header('location: mensaje_exito.html'); // Redireccionamos a la pagina de exito
         }else{
             echo mysqli_error($con);
         }
@@ -41,6 +47,7 @@
         mysqli_close($con);
 
     }else{
+        // Desplegamos los links de la barra de navegacion
         $template->loadTemplatefile("nuevo_album.html", true, true);
         if($_SESSION['tipo_usuario'] == 1)
             $template->addBlockfile("LINKS_NAVEGACION", "NAVEGACION", "../links_logged_admin.html");

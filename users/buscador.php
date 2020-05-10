@@ -1,4 +1,10 @@
 <?php
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    9/mayo/2020
+ * @file:    buscador.php
+ * @brief:  Este archivo se encarga de buscar albumes segun un filtro de busqueda
+ */
     include '../cfg_server.php';
     require_once "HTML/Template/ITX.php";
     $template = new HTML_TEMPLATE_ITX('../templates'); // Cargamos los templates
@@ -7,6 +13,7 @@
     $busqueda = $_POST['busqueda'];
     $filtroBusqueda = $_POST['filtroBusqueda'];
     $username = $_SESSION['username'];
+    // Dependiendo del filtro de busqueda ejecutamos un query diferente
     if($filtroBusqueda == "nombre")
         //$query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE a.username LIKE '%" . $busqueda . "%'  AND tipo = 0 GROUP BY id_album";
         $query = "SELECT titulo, cover, tema, visitas, fecha_publicacion, descripcion, a.id_album, COUNT(id_foto) cuenta, a.username, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) LEFT JOIN Suscripciones sus ON sus.id_album = a.id_album WHERE a.username LIKE '%".$busqueda."%' AND (tipo = 0 OR a.username = '$username' OR a.id_album IN (SELECT id_album FROM Suscripciones WHERE username = '$username') ) GROUP BY id_album";
