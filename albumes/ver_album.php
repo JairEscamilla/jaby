@@ -12,6 +12,8 @@
     $album = $_GET['album'];
     $link = mysqli_connect($cfg['host'], $cfg['user'], $cfg['password'], $cfg['db']);
     
+
+    if($_SESSION['tipo_usuario'] != 1){
     // Validamos que el usuario tenga acceso al album
     $query = "SELECT username FROM Album WHERE id_album = '$album'";
     $res = mysqli_query($link, $query);
@@ -25,7 +27,7 @@
             return;
         }
     }
-
+}
    
     
 
