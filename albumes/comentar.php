@@ -16,7 +16,7 @@
     }
     $username = $_SESSION['username'];
     
-    $query = "INSERT INTO Comentarios(username, comentario, id_foto) VALUES('$username', '$comentario', '$id_foto')";
+    $query = "INSERT INTO Comentarios(username, comentario, id_foto, fecha) VALUES('$username', '$comentario', '$id_foto', NOW())";
 
     // Insertamos y desplegamos el comentario en la base de datos
     if(!mysqli_query($link, $query)){
@@ -31,6 +31,11 @@
     $template->setVariable("USUARIO", $username);
     $template->setVariable("COMMENT", $comentario);
     $template->setVariable("PERFIL_COMENTARIO", $fields['foto']);
+    
+    $result = mysqli_query($link, "SELECT CURDATE() AS fecha");
+    $fields = mysqli_fetch_assoc($result);
+    $template->setVariable("FECHA", $fields['fecha']);
+
     mysqli_close($link);
 
     $template->show();

@@ -71,11 +71,11 @@
         $template->setVariable("URL_IMAGEN", $fields['direccion_foto']);
 
         $id_foto = $fields['id_foto'];
-        $query2 = "SELECT comentario, usu.username, usu.foto FROM Comentarios com INNER JOIN Usuario usu USING(username) WHERE id_foto = '$id_foto'";
+        $query2 = "SELECT comentario, usu.username, usu.foto, com.fecha FROM Comentarios com INNER JOIN Usuario usu USING(username) WHERE id_foto = '$id_foto'";
         $result2 = mysqli_query($link, $query2);
         $comentarios = "";
         while($fields2 = mysqli_fetch_assoc($result2)){
-            $comentarios = $comentarios.crearCadena($fields2['foto'], $fields2['username'], $fields2['comentario']);
+            $comentarios = $comentarios.crearCadena($fields2['foto'], $fields2['username'], $fields2['comentario'], $fields2['fecha']);
         }
         $template->setVariable("COMENTARIOS", $comentarios);
         $template->setVariable("ID_FOTO", $id_foto);
@@ -89,7 +89,7 @@
     $template->show();
     
     //  Creamos una cadena con los comentarios hechos de cada foto
-    function crearCadena($imagen, $usuario, $comentario){
+    function crearCadena($imagen, $usuario, $comentario, $fecha){
         $base = "
             <div class='card comment tarjeta'>
                 <div class='encabezado'>
@@ -97,6 +97,9 @@
                     <div class='user-container'>
                         <p class='user'>".$usuario."</p>
                     </div>
+		    <div class='user-container'>
+			<p class='user'>".$fecha."</p>
+		    </div>
                 </div>
                 <div class='cuerpo-comentario'>
                     <p>".$comentario."</p>
