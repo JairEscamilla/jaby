@@ -28,18 +28,15 @@
 
     /* Codigo para mandar notificaciones a los usuarios que esten suscritos a un album privado */
 
-    $queryAlbum = "SELECT tipo FROM Album WHERE id_album = '$album'";
-    $result = mysqli_query($link, $queryAlbum);
-    $fields = mysqli_fetch_assoc($result);
-    if($fields['tipo'] == 1){ // En caso de ser privado, mandamos la notificacion
+ // Mandamos la notificacion
         $queryNotificacion = "SELECT username FROM Suscripciones WHERE id_album = '$album'";
         $resultNotificacion = mysqli_query($link, $queryNotificacion);
         while($fields = mysqli_fetch_assoc($resultNotificacion)){ // Mandamos una notificacion para cada usuario suscrito al album
             $usr = $fields['username'];
-            $queryInsertaNotificacion = "INSERT INTO Notificaciones(notificacion, status, username) VALUES (\"Se ha subido una nueva foto un album al que te han invitado <a class ='invitacion' href='../albumes/ver_album.php?album=" . $album . "'>Ver álbum</a>\", 0, '$usr')";
+            $queryInsertaNotificacion = "INSERT INTO Notificaciones(notificacion, status, username) VALUES (\"Se ha subido una nueva foto a un album al que te han invitado <a class ='invitacion' href='../albumes/ver_album.php?album=" . $album . "'>Ver álbum</a>\", 0, '$usr')";
             mysqli_query($link, $queryInsertaNotificacion);
         }
-    }
+
 
 
     mysqli_close($link);

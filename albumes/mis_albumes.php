@@ -46,6 +46,11 @@
         $template->setVariable("FECHA", $fields['fecha_publicacion']);
         $template->setVariable("TEMA", $fields['tema']);
         $template->setVariable("IMAGEN", $fields['cover']);
+        if ($_SESSION['username'] == $fields['username'])
+            $template->setVariable("INVITACION", "<a href='#' id='invitacion' onclick='return invitar_usuario(" . $fields['id_album'] . ")' >Invita a un usuario</a>");
+        else
+            $template->setVariable("INVITACION", "");
+
         $template->parseCurrentBlock("ALBUM");
     }
     $template->parseCurrentBlock("PUBLICOS");

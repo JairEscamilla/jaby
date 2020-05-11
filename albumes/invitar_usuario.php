@@ -15,7 +15,7 @@
         return;
     }
     $query = "INSERT INTO Suscripciones(username, id_album) VALUES('$username', '$album')";
-    $query2 = "INSERT INTO Notificaciones(notificacion, status, username) VALUES(\"Se te ha invitado a un nuevo album <a class ='invitacion' href='../albumes/ver_album.php?album=".$album."'>Ver álbum</a>\", 0, '$username')";
+    $query2 = "INSERT INTO Notificaciones(notificacion, status, username) VALUES(\"Se te ha suscrito a un nuevo album <a class ='invitacion' href='../albumes/ver_album.php?album=".$album."'>Ver álbum</a>\", 0, '$username')";
     $query3 = "SELECT username FROM Suscripciones WHERE username = '$username' AND id_album = '$album'";
     $result = mysqli_query($link, $query3);
     if(mysqli_num_rows($result) > 0){ // Validamos que no pueda invitar dos veces a un mismo usuario
