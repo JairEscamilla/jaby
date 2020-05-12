@@ -39,7 +39,7 @@
             // SELECT titulo, descripcion, id_album, COUNT(id_foto) FROM Album LEFT JOIN Fotos USING(id_album) WHERE username = 'jair1' GROUP BY id_album;
             $template->addBlockfile("ALBUMES", "ALBUMES", "card_album_fotos.html");
             $template->setCurrentBlock("ALBUMES");
-            $query = "SELECT titulo, descripcion, id_album, COUNT(id_foto) cuenta, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE a.username = '$username' GROUP BY id_album ORDER BY calif DESC";
+            $query = "SELECT titulo, descripcion, id_album, COUNT(id_foto) cuenta, AVG(calificacion) calif FROM Album a LEFT JOIN Fotos USING(id_album) LEFT JOIN Calificaciones USING(id_foto) WHERE a.username = '$username' AND status = 1  GROUP BY id_album ORDER BY calif DESC";
             $result = mysqli_query($link, $query);
 
             while($line = mysqli_fetch_assoc($result)){
