@@ -11,4 +11,4 @@ http://antares.dci.uia.mx/ic18aeh/proyecto_final/
 ## Desarrollado por
 
 Jair Escamilla – [@JairEscamilla9](https://twitter.com/JairEscamilla9) – jairalan1406@gmail.com\
-Gabriela Uribe – [@gabrielauribe1](https://github.com/gabrielauribe1)
+Gabriela Uribe – [@gabrielauribe1](https://github.com/gabrielauribe1) -gabyugc@gmail.com\
